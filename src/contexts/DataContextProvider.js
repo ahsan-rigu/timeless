@@ -7,8 +7,10 @@ const DataContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [navData, setNavData] = useState([]);
   const [featuredData, setFeaturedData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
+    setLoading(true);
     try {
       const {
         data: { products },
@@ -24,6 +26,8 @@ const DataContextProvider = ({ children }) => {
       setFeaturedData(featuredData);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
