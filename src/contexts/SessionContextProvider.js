@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useState } from "react";
 
-const SessionContext = createContext();
+export const SessionContext = createContext();
 
 const emptyFilterInput = {
   sort: "",

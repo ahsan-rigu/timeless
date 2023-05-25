@@ -14,12 +14,14 @@ function App() {
   return !loading ? (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/products" element={<Products />}></Route>
-        <Route path="/product/:prodcutid" element={<Product />}></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/products" element={<Products />}></Route>
+          <Route path="/product/:prodcutid" element={<Product />}></Route>
+          <Route path="/checkout" element={<Checkout />}></Route>
+        </Routes>
+      </main>
       <Footer />
     </>
   ) : (
