@@ -5,13 +5,19 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import DataContextProvider from "./contexts/DataContextProvider";
 import AuthContextProvider from "./contexts/AuthContextProvider";
+import UserContextProvider from "./contexts/UserContextProvider";
+import SessionContextProvider from "./contexts/SessionContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <DataContextProvider>
       <AuthContextProvider>
-        <App />
+        <UserContextProvider>
+          <SessionContextProvider>
+            <App />
+          </SessionContextProvider>
+        </UserContextProvider>
       </AuthContextProvider>
     </DataContextProvider>
   </React.StrictMode>

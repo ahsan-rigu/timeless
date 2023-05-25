@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { createContext, useState } from "react";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -17,7 +17,7 @@ const AuthContextProvider = ({ children }) => {
           setLoggedIn(true);
         }
       } catch (error) {
-        console.log(error); //remove this
+        console.log(error);
         localStorage.setItem("token", null);
       }
     }
@@ -41,8 +41,11 @@ const AuthContextProvider = ({ children }) => {
   const signUp = async (newUser) => {
     try {
       const res = await axios.post("http://localhost:8080/sign-up", newUser);
-      localStorage.setItem("localData", null); //remove local cart data because it has been move to cloud data
+      localStorage.setItem("localData", null);
       signIn(newUser.email, newUser.password);
+      if (res.status === 201) {
+        //toast something
+      }
     } catch (error) {
       console.log(error);
     }
@@ -60,6 +63,9 @@ const AuthContextProvider = ({ children }) => {
         password,
       });
       signOut();
+      if (res.status === 201) {
+        //toast something
+      }
     } catch (error) {
       console.log(error);
     }
@@ -67,7 +73,15 @@ const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ authorizeToken, signIn, signUp, signOut, deleteUser, loggedIn }}
+      value={{
+        authorizeToken,
+        signIn,
+        signUp,
+        signOut,
+        deleteUser,
+        loggedIn,
+        setLoggedIn,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -36,7 +36,7 @@ const DataContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ products, navData, featuredData }}>
+    <DataContext.Provider value={{ products, navData, featuredData, loading }}>
       {children}
     </DataContext.Provider>
   );
