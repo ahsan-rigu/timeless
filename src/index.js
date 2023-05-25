@@ -7,6 +7,7 @@ import DataContextProvider from "./contexts/DataContextProvider";
 import AuthContextProvider from "./contexts/AuthContextProvider";
 import UserContextProvider from "./contexts/UserContextProvider";
 import SessionContextProvider from "./contexts/SessionContextProvider";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +16,9 @@ root.render(
       <AuthContextProvider>
         <UserContextProvider>
           <SessionContextProvider>
-            <App />
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
           </SessionContextProvider>
         </UserContextProvider>
       </AuthContextProvider>
