@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
@@ -70,6 +70,10 @@ const AuthContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    authorizeToken();
+  }, []);
 
   return (
     <AuthContext.Provider

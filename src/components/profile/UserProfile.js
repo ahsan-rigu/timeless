@@ -7,7 +7,6 @@ const UserProfile = () => {
   const {
     userData: { user },
   } = useContext(UserContext);
-  console.log(user);
 
   return (
     <section>

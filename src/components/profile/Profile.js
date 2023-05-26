@@ -15,8 +15,6 @@ const Profile = () => {
   const { loggedIn, signIn } = useContext(AuthContext);
   const { setProfileActive, profileActive } = useContext(SessionContext);
 
-  console.log(flipped);
-
   return (
     <section
       className={

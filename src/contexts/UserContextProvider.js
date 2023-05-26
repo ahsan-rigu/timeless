@@ -97,8 +97,8 @@ const UserContextProvider = ({ children }) => {
                 userData.user.cartItems[index].quantity + payload.quantity,
             };
           }
-          updateUser(userData.user);
           return { ...userData };
+          updateUser(userData.user);
         }
         case "REMOVE_FROM_CART": {
           userData.user.cartItems = userData.user.cartItems.filter(
@@ -211,7 +211,9 @@ const UserContextProvider = ({ children }) => {
   }, [loggedIn]);
 
   return (
-    <UserContext.Provider value={{ userData }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ userData, dispatchUserData }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 

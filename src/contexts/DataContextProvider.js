@@ -7,10 +7,9 @@ const DataContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [navData, setNavData] = useState([]);
   const [featuredData, setFeaturedData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
-    setLoading(true);
     try {
       const {
         data: { products },

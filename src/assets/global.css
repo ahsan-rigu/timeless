@@ -53,4 +53,13 @@ a{
   justify-self: center;
 }
 
+.rating{
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  top: .25rem;
+}
+
+
+
 
