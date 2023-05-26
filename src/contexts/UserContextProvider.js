@@ -64,7 +64,7 @@ const UserContextProvider = ({ children }) => {
         }
       }
     } else {
-      if (!localStorage.getItem("localData")) {
+      if (localStorage.getItem("localData") === "null") {
         localStorage.setItem(
           "localData",
           JSON.stringify({ wishlistItems: [], cartItems: [] })
@@ -202,8 +202,8 @@ const UserContextProvider = ({ children }) => {
   };
 
   const [userData, dispatchUserData] = useReducer(userDataReducer, {
-    user: {},
-    localUser: {},
+    user: { cartItems: [], wishlistItems: [] },
+    localUser: { cartItems: [], wishlistItems: [] },
   });
 
   useEffect(() => {

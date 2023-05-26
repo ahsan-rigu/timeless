@@ -8,6 +8,8 @@ import Home from "./pages/home/Home";
 import Products from "./pages/products/Products";
 import Product from "./pages/product/Product";
 import Checkout from "./pages/checkout/Checkout";
+import Cart from "./components/cart/Cart";
+import Profile from "./components/profile/Profile";
 
 function App() {
   const { loading } = useContext(DataContext);
@@ -21,6 +23,8 @@ function App() {
           <Route path="/product/:prodcutid" element={<Product />}></Route>
           <Route path="/checkout" element={<Checkout />}></Route>
         </Routes>
+        <Cart />
+        <Profile />
       </main>
       <Footer />
     </>

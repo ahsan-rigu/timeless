@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+
+.product-in-cart *{
+    margin: 0;
+    color: rgb(120,120,120);
+}
+
+.product-in-cart{
+    position: relative;
+    text-align: left;
+    box-sizing: border-box;
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    padding: 0 1rem;
+    margin: .5rem 0;
+}
+
+.thumbnail-for-list{
+    color: rgb(120,120,120);
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    padding: .5rem;
+    border: 1px solid rgb(238, 238, 238);
+}
+
+.product-in-cart>.content{
+    flex-grow: 1;
+}
+.product-in-cart>.content *{
+    margin-bottom: .5rem;
+}
+
+.product-in-cart>.content>h5{
+    font-weight: 400;
+    color: rgb(37, 37, 37);
+}
+
+span.price-total{
+    display: inline-block;
+    color: black;
+    font-weight: 400;
+    float: right;
+}
+
+.icon-top-right{
+    position: absolute;
+    right: 1rem;
+    top: 0;
+}

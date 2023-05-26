@@ -6,10 +6,14 @@
 
 :root{
   --color-black: #343434;
-  --color-light-grey: #dadada;
-  --color-background-nav: #f5ebe9;
-  --color-background-hover: #f3ebe9;
-  --color-background-drawers: #f7f3f3;
+  --color-light-grey: #c4c4c4;
+  --color-background-nav: #fff5f2;
+  --color-background-hover: #f6edea;
+  --color-background-drawers: #fff5f2;
+  --color-accent-one: #fae9e4;
+  --color-accent-two: #ffeee9;
+  background-color: #e8eaec;
+
 }
 
 *{
@@ -35,14 +39,18 @@ svg{
 }
 
 button{
-  background-color: none;
-  border: 1px solid grey;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
 }
 
 a{
   text-decoration: none;
   color: black;
+}
+
+.icon{
+  justify-self: center;
 }
 
 

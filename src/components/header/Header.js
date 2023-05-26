@@ -16,7 +16,6 @@ const Header = () => {
   const { setProfileActive, setWishlistActive, setCartActive } =
     useContext(SessionContext);
   const { navData } = useContext(DataContext);
-  console.log(navData);
   return (
     <div className="wrapper">
       <header className="header-main">

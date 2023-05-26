@@ -48,7 +48,7 @@ const filterInputReducer = (filterInput, { action, payload }) => {
 
 const SessionContextProvider = ({ children }) => {
   const [cartActive, setCartActive] = useState(false);
-  const [wishlistActive, setWishlisttActive] = useState(false);
+  const [wishlistActive, setWishlistActive] = useState(false);
   const [profileActive, setProfileActive] = useState(false);
   const [filterMenuActive, setFilterMenuActive] = useState(false);
 
@@ -58,7 +58,18 @@ const SessionContextProvider = ({ children }) => {
   );
 
   return (
-    <SessionContext.Provider value={{}}>{children}</SessionContext.Provider>
+    <SessionContext.Provider
+      value={{
+        setCartActive,
+        setWishlistActive,
+        setProfileActive,
+        cartActive,
+        profileActive,
+        wishlistActive,
+      }}
+    >
+      {children}
+    </SessionContext.Provider>
   );
 };
 
