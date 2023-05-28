@@ -86,7 +86,7 @@
     width: 100%;
     justify-content: center;
 }
-.container-listing .button-primary{
+.button-primary, .button-secondary{
     width: calc(100% - 2rem);
     text-align: center;
     font-family: "roboto";
@@ -96,7 +96,14 @@
     padding: .5rem;
     font-size: 1.75rem;
     margin: 1rem;
+    &.button-secondary{
+        background-color: transparent;
+        color: var(--color-black);
+        border: 1px solid currentColor;
+    }
 }
+
+
 
 .container-listing *{
     box-sizing: border-box;

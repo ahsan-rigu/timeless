@@ -1,0 +1,189 @@
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    margin-bottom: .5rem;
+  }
+
+
+ 
+ .filter-block{
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     border-bottom: 1px solid var(--color-light-grey);
+     margin: .5rem 0rem;
+     padding-bottom: .5rem;
+ }
+
+ .filter-block label input{
+    width: auto;
+    display: inline;
+ }
+
+ 
+ .filters{
+ 
+     background-color: transparent;
+     position: sticky;
+     top: 4.5rem;
+     align-self: flex-start;
+     min-width: 16rem;
+     max-width: 95vw;
+     padding: 0 2rem;
+     z-index: 100;
+     border-right: 1px solid var(--color-light-grey);
+     max-height: 90vh;
+     overflow: scroll;
+     margin-left: .75rem;
+ 
+ }
+ 
+ .btn-filter{
+     display: none;
+     padding: .5rem;
+     background-color: transparent;
+     border: none;
+     position: fixed;
+     top: .25rem;
+     z-index: 4;
+ }
+ 
+ .filter-block:has(.btn-sec){
+     align-items: flex-end;
+     display: none;
+ }
+ 
+ .filters .btn-sec{
+     border: none;
+     cursor: pointer;
+     padding-bottom: 1rem;
+     position: relative;
+     left: 1rem;
+ }
+ 
+ .filter-block label{
+     padding-left: 1rem;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+ 
+ }
+ 
+ .filter-block h4{
+     font-weight: 500;
+     color: #343434;
+ }
+ 
+ .filter-block label{
+     font-weight: 300;
+     padding-bottom:.5rem ;
+     color: #343434;
+ }
+
+ .filter-block span{
+    font-weight: 300;
+    padding-bottom:.5rem ;
+    margin: auto;
+}
+ 
+ .products-page-container{
+     padding: .5rem 0rem;
+     max-width: 78rem;
+     margin: auto;
+     display: flex;
+     justify-content: center;
+     min-height: calc(100vh - 5rem);
+ }
+ 
+ .filter-block input[type="checkbox"]{
+     border: 1px solid red;
+ }
+
+ .filter-block input[type="range"]{
+    margin: .5rem auto ;
+ }
+
+ .filter-block input[type="number"], .filter-block input[type="text"]{
+    margin: .5rem auto ;
+    background-color: transparent;
+    padding: .25rem;
+    border: 1px solid var(--color-light-grey);
+ }
+
+.products-actual{
+    display: inline-flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-bar{
+    display: none;
+    margin: 0 1rem;
+    padding-block: .5rem;
+    position: sticky;
+    top: 3.25rem;
+    z-index: 10;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--color-light-grey);
+    
+    & button{
+        border: 1px solid var(--color-light-grey);
+        padding: .5rem;
+        margin: .25rem;
+        border-radius: 1rem;
+        font-size: .75rem;
+    }
+}
+
+div.clear-and-close.filter-block{
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-block: .75rem;
+    & button{
+        border: 1px solid var(--color-light-grey);
+        min-height: 2rem;
+        padding-inline: .5rem;
+        border-radius: .5rem;
+        font-weight: 300;
+    }
+}
+ 
+ 
+ 
+ @media (width <= 1024px){
+     .filters{
+         background-color: var(--background-color);
+         z-index: 12;
+         top: 3rem;
+         position: fixed;
+         padding-bottom: 3rem;
+         left: max(-17rem, -95vw - 1rem);
+         transition: left .6s;
+     }
+ 
+     .filters.active{
+         display: block;
+         left: -1rem;
+         max-height: 100vh;
+         height: 100vh;
+         width: 16rem;
+     }
+     .filter-block:has(.btn-sec){
+         display: flex;
+     }
+ 
+     .filter-bar{
+         display: block;
+     }
+ 
+ }
+ 
+ @media (width <= 768px){
+     .btn-filter{
+         left: 5.5rem;
+     }
+ }
+ 
+ 

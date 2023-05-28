@@ -20,6 +20,7 @@ const Product = () => {
   const {
     _id,
     id,
+    quantity,
     brand,
     name,
     images,
@@ -28,14 +29,11 @@ const Product = () => {
     gender,
     description,
     features,
-    quantity,
     rating,
     estimatedDeliveryTime,
   } = products.find(({ id }) => id == productid);
 
   let isInWishList = false;
-
-  console.log(userData);
 
   if (loggedIn) {
     const index = userData.user.wishlistItems.findIndex(
@@ -150,17 +148,21 @@ const Product = () => {
             Rating: <Rating rating={rating} size={"1.5rem"} />
           </span>
         </div>
-        <button
-          className="button-primary"
-          onClick={() =>
-            dispatchUserData({
-              action: "ADD_TO_CART",
-              payload: { _id, quantity: noToAdd },
-            })
-          }
-        >
-          ADD TO CART
-        </button>
+        {quantity > 0 ? (
+          <button
+            className="button-primary"
+            onClick={() =>
+              dispatchUserData({
+                action: "ADD_TO_CART",
+                payload: { _id, quantity: noToAdd },
+              })
+            }
+          >
+            ADD TO CART
+          </button>
+        ) : (
+          <button className="button-secondary">OUT OF STOCK</button>
+        )}
       </section>
     </section>
   );

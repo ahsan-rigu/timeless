@@ -3,10 +3,12 @@ import React, { createContext, useReducer, useState } from "react";
 export const SessionContext = createContext();
 
 const emptyFilterInput = {
+  search: "",
   sort: "",
   genders: [],
+  brands: [],
   categories: [],
-  maxPrice: Infinity,
+  maxPrice: 250000,
   minRating: 0,
   outOfStock: false,
 };
@@ -17,6 +19,10 @@ const filterInputReducer = (filterInput, { action, payload }) => {
       filterInput.search = payload;
       return { ...filterInput };
     }
+    case "UPDATE_SORT": {
+      filterInput.sort = payload;
+      return { ...filterInput };
+    }
     case "UPDATE_FILTER_CHECKBOXES": {
       if (payload.checked) {
         filterInput[payload.filterBlock].push(payload.value);
@@ -24,16 +30,20 @@ const filterInputReducer = (filterInput, { action, payload }) => {
         filterInput[payload.filterBlock] = filterInput[
           payload.filterBlock
         ].filter((item) => item !== payload.value);
-        console.log(filterInput);
       }
       return { ...filterInput };
     }
     case "UPDATE_MAX_PRICE": {
-      filterInput.maxPrice = payload;
+      filterInput.maxPrice = Number(payload);
       return { ...filterInput };
     }
     case "UPDATE_MIN_RATING": {
-      filterInput.minRating = payload;
+      filterInput.minRating = Number(payload);
+      return { ...filterInput };
+    }
+
+    case "UPDATE_OOS": {
+      filterInput.outOfStock = payload;
       return { ...filterInput };
     }
     case "CLEAR_FILTERBLOCK_CHECKBOXES": {
@@ -41,10 +51,15 @@ const filterInputReducer = (filterInput, { action, payload }) => {
       return { ...filterInput };
     }
     case "CLEAR_ALL_FILTERS": {
+      filterInput.genders = [];
+      filterInput.brands = [];
+      filterInput.categories = [];
       return { ...emptyFilterInput };
     }
   }
 };
+
+console.log(emptyFilterInput);
 
 const SessionContextProvider = ({ children }) => {
   const [cartActive, setCartActive] = useState(false);
@@ -52,10 +67,9 @@ const SessionContextProvider = ({ children }) => {
   const [profileActive, setProfileActive] = useState(false);
   const [filterMenuActive, setFilterMenuActive] = useState(false);
 
-  const [filterInput, dispatchFilterInput] = useReducer(
-    filterInputReducer,
-    emptyFilterInput
-  );
+  const [filterInput, dispatchFilterInput] = useReducer(filterInputReducer, {
+    ...emptyFilterInput,
+  });
 
   return (
     <SessionContext.Provider
@@ -63,9 +77,11 @@ const SessionContextProvider = ({ children }) => {
         setCartActive,
         setWishlistActive,
         setProfileActive,
+        dispatchFilterInput,
         cartActive,
         profileActive,
         wishlistActive,
+        filterInput,
       }}
     >
       {children}
