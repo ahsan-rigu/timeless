@@ -11,19 +11,17 @@ import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <DataContextProvider>
-      <AuthContextProvider>
-        <UserContextProvider>
-          <SessionContextProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </SessionContextProvider>
-        </UserContextProvider>
-      </AuthContextProvider>
-    </DataContextProvider>
-  </React.StrictMode>
+  <DataContextProvider>
+    <AuthContextProvider>
+      <UserContextProvider>
+        <SessionContextProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </SessionContextProvider>
+      </UserContextProvider>
+    </AuthContextProvider>
+  </DataContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

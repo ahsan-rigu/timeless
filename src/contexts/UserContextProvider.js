@@ -44,7 +44,7 @@ const UserContextProvider = ({ children }) => {
               action: "SET_USER",
               payload: res.data.user,
             });
-            localStorage.setItem("localData", null);
+            localStorage.setItem("localData", "");
             userData.localUser.wishlistItems.map((item) => {
               dispatchUserData({
                 action: "ADD_TO_WISHLIST",
@@ -64,7 +64,7 @@ const UserContextProvider = ({ children }) => {
         }
       }
     } else {
-      if (localStorage.getItem("localData") === "null") {
+      if (localStorage.getItem("localData")) {
         localStorage.setItem(
           "localData",
           JSON.stringify({ wishlistItems: [], cartItems: [] })

@@ -6,8 +6,11 @@ import { UserContext } from "../../contexts/UserContextProvider";
 import { SessionContext } from "../../contexts/SessionContextProvider";
 import { AuthContext } from "../../contexts/AuthContextProvider";
 import ProductInCart from "../cart-and-wishlist-card/cartAndWishlistCart";
+import Nothing from "../Nothing";
+import { DataContext } from "../../contexts/DataContextProvider";
 
 const Cart = () => {
+  const { products } = useContext(DataContext);
   const { loggedIn } = useContext(AuthContext);
   const { userData } = useContext(UserContext);
   const { setCartActive, cartActive } = useContext(SessionContext);
@@ -15,6 +18,11 @@ const Cart = () => {
   const items = loggedIn
     ? userData.user.cartItems
     : userData.localUser.cartItems;
+
+  const totalPrice = items.reduce((acc, { _id, quantity }) => {
+    const { price, discount } = products.find((product) => product._id === _id);
+    return (price - (discount * price) / 100) * quantity + acc;
+  }, 0);
 
   return (
     <div className={cartActive ? "cart-container active" : "cart-container"}>
@@ -29,17 +37,17 @@ const Cart = () => {
           />
         </header>
         <div className="cart-products">
-          {items.length > 0 &&
+          {items.length > 0 ? (
             items.map(({ _id, quantity }) => (
               <ProductInCart key={_id} _id={_id} quantity={quantity} fromCart />
-            ))}
+            ))
+          ) : (
+            <Nothing />
+          )}
         </div>
         <footer>
           {loggedIn ? (
-            <button>
-              {"$40000"}
-              {" | CHEKOUT->"}
-            </button>
+            <button>{`$${totalPrice} | CHEKOUT->`}</button>
           ) : (
             <button>LOG IN</button>
           )}

@@ -1,0 +1,122 @@
+.container-slider *{
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.container-slider h2{
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0;
+    padding: .5rem 2rem;
+}
+
+.container-slider p{
+    padding: .5rem 2rem;
+    font-size: 1.25rem;
+}
+
+.container-slider button{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    background-color: transparent;
+    color: rgb(68, 68, 68);
+    border: 1px solid rgb(173, 173, 173);
+    padding: .5rem 1rem;
+    margin: .5rem 2rem;
+    transition: .4s;
+}
+
+.container-slider button:hover{
+    background-color: black;
+    border: 1px solid rgb(34, 34, 34);
+    color: white;
+}
+
+
+
+.container-slider{
+    box-sizing: border-box;
+    display: flex;
+    padding: 32px;
+    width: min(68rem, 100vw);
+    margin: auto;
+    align-items: center;
+    text-align: left;
+}
+
+.hero-image{
+    width: 880px;
+    height: 520px;
+    box-shadow: inset 10 10  white;
+    background-size: cover;
+    background-position: center;
+    outline: 1px solid #b1b1b1;
+    outline-offset: .5rem;
+}
+
+.hero-content{
+    width: 400px;
+    
+}
+
+.slider-controls{
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    align-items: center;
+    padding: 1rem 0rem;
+}
+
+.slider-controls svg{
+    color: #6f6f6f;
+    cursor: pointer;
+}
+
+.radio-slider *{
+    margin: 0 .5rem;
+}
+
+
+.counter{
+}
+
+.counter *{
+    display: inline;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    padding: 0 .5rem; 
+    width: 3rem;
+}
+
+
+
+.product-content>button{
+    width: 95%;
+    text-align: center;
+    margin: .5rem;
+    background-color: black;
+    color: white;
+    font-size: 32px;
+    font-weight: 100;
+    font-family: "Roboto";
+    border: 1px solid black;
+    padding: .5rem 0;
+    cursor: pointer;
+
+}
+.hero-slider{
+    max-width: 1260px;
+}
+@media (width <= 768px){
+    .container-slider{
+        flex-direction: column;
+    }
+    .hero-image{
+        width: 100%;
+        height: 40vh;
+    }
+    .hero-content{
+        max-width: 100vw;
+    }
+}

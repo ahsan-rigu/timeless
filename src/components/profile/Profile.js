@@ -11,7 +11,7 @@ import LogInForm from "./LogInForm";
 import SignUpForm from "./SignUpForm";
 
 const Profile = () => {
-  const [flipped, setFlipped] = useState(true);
+  const [flipped, setFlipped] = useState(false);
   const { loggedIn, signIn } = useContext(AuthContext);
   const { setProfileActive, profileActive } = useContext(SessionContext);
 

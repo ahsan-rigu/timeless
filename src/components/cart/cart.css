@@ -1,49 +1,36 @@
 
 
-.cart-container{
-    width: min(30rem, 90vh);
+.cart-container ,.wishlist-container{
+    background-color: var(--color-background-nav);
+    width: min(30rem, 95vw);
     z-index: 901;
     position: fixed;
     top: 0;
     display: inline-flex;
-    right: -540px;
+    right: max(-30rem, -95vw);;
     height: 100vh;
     justify-content: flex-end;
     transition: .3s ease-in-out;
 }
 
-.cart-container.active{
+.cart-container.active, .wishlist-container.active{
     right: 0;
 }
 
 
-.cart-actual{
-    width: 540px;
+.cart-actual, .wishlist-actual{
+    width: 34rem;
     display: flex;
     flex-direction: column;
     align-content: center;
-    background-color: white;
-    border-left: 1px solid rgb(223, 223, 223);
+    border-left: 1px solid var(--color-light-grey);
 }
 
-.wishlist .cart-actual{
-    width: 540px;
-    background-color: white;
-    border-left: 1px solid rgb(236, 235, 235);
-}
-
-.cart-reccomendations{
-    width: 280px;
-    background-color: white;
-    border-left: 1px solid rgb(236, 235, 235);
-
-}
-
-.cart-actual header{
+.cart-actual header, .wishlist-actual header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 32px;
+    padding: 0 1.5rem;
     border-bottom: 1px solid rgb(202, 202, 202);
     margin-bottom: 1rem;
 }
@@ -53,15 +40,11 @@
     color: black;
 }
 
-.cart-actual .icon{
-    width: 1.5rem;
 
-}
-
-.cart-actual h4{
+.cart-actual h4, .wishlist-actual h4{
     font-size: 1.5rem;
     font-family: 'Raleway', sans-serif;
-    padding: .75rem 0;
+    padding: .5rem 0;
     font-weight: 300;
 }
 
@@ -69,19 +52,17 @@
     cursor: pointer;
 }
 
-.cart-actual footer{
+.cart-actual footer, .wishlist-actual footer{
     margin-bottom: 2rem;
     border-top: 1px solid rgb(79, 79, 79);
-
 }
 
 footer button{
     width: 95%;
-    text-align: center;
     margin: .5rem;
     background-color: black;
     color: white;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 100;
     font-family: "Roboto";
     border: 1px solid black;
@@ -89,9 +70,13 @@ footer button{
     cursor: pointer;
 }
 
-.cart-products{
+.cart-products, .wishlist-products{
     overflow: scroll;
     flex-grow: 1;
+    & .nothing{
+        margin-block: 50%;
+    }
 }
+
 
 
