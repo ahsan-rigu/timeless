@@ -90,14 +90,22 @@ const ProductInCart = ({ _id, quantity, fromCart, fromWishlist }) => {
           </span>
         </span>
         {fromCart && (
-          <button className="icon-top-right" onClick={moveHandler}>
+          <button
+            className="icon-top-right"
+            onClick={moveHandler}
+            title="Move To Wishlist"
+          >
             {" "}
             <BsArrowBarRight size={"1.5rem"} />
             <CiHeart size={"1.5rem"} />
           </button>
         )}
         {fromWishlist && (
-          <button className="icon-top-right" onClick={moveHandler}>
+          <button
+            className="icon-top-right"
+            onClick={moveHandler}
+            title="Move To Cart"
+          >
             {" "}
             <BsArrowBarRight size={"1.5rem"} />
             <CiShoppingCart size={"1.5rem"} />

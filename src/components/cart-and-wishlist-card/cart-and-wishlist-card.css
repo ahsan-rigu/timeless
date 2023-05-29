@@ -68,7 +68,6 @@
 }
 
 span.price-total{
-    display: inline-block;
     color: black;
     font-weight: 400;
     float: right;
