@@ -13,8 +13,12 @@ import { DataContext } from "../../contexts/DataContextProvider";
 const Header = () => {
   const [mobileNavActive, setMobileNavActive] = useState(false);
 
-  const { setProfileActive, setWishlistActive, setCartActive } =
-    useContext(SessionContext);
+  const {
+    setProfileActive,
+    setWishlistActive,
+    setCartActive,
+    setSearchActive,
+  } = useContext(SessionContext);
   const { navData } = useContext(DataContext);
   return (
     <div className="wrapper">
@@ -45,7 +49,11 @@ const Header = () => {
           className="menu-icon icon"
           onClick={() => setMobileNavActive((prev) => !prev)}
         />
-        <CiSearch size={24} className="search-icon icon" />
+        <CiSearch
+          size={24}
+          className="search-icon icon"
+          onClick={() => setSearchActive((prev) => !prev)}
+        />
         <CiUser
           onClick={() => setProfileActive((prev) => !prev)}
           size={"1.5rem"}

@@ -11,6 +11,7 @@ import Checkout from "./pages/checkout/Checkout";
 import Cart from "./components/cart/Cart";
 import Profile from "./components/profile/Profile";
 import Wishlist from "./components/wishlist/Wishlist";
+import Search from "./components/search/Search";
 
 function App() {
   const { loading } = useContext(DataContext);
@@ -27,6 +28,7 @@ function App() {
         <Cart />
         <Profile />
         <Wishlist />
+        <Search />
       </main>
       <Footer />
     </>

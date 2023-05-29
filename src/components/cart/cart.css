@@ -1,6 +1,6 @@
 
 
-.cart-container ,.wishlist-container{
+.cart-container ,.wishlist-container, .search-container{
     background-color: var(--color-background-nav);
     width: min(30rem, 95vw);
     z-index: 901;
@@ -13,12 +13,12 @@
     transition: .3s ease-in-out;
 }
 
-.cart-container.active, .wishlist-container.active{
+.cart-container.active, .wishlist-container.active, .search-container.active{
     right: 0;
 }
 
 
-.cart-actual, .wishlist-actual{
+.cart-actual, .wishlist-actual, .search-actual{
     width: 34rem;
     display: flex;
     flex-direction: column;
@@ -26,14 +26,34 @@
     border-left: 1px solid var(--color-light-grey);
 }
 
-.cart-actual header, .wishlist-actual header{
+.cart-actual header, .wishlist-actual header, .search-actual header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 1.5rem;
     border-bottom: 1px solid rgb(202, 202, 202);
     margin-bottom: 1rem;
+    & input{
+        font-size: 1rem;
+        padding: .2rem;
+        font-weight: 300;
+        background-color: transparent;
+        margin: .55rem;
+        border: none;
+        flex-grow: 1;
+    }
 }
+
+.search-actual header{
+    border: 1px solid var(--color-light-grey);
+    border-radius: 2rem;
+    margin: .5rem;
+    padding-inline: .5rem;
+    min-height: 2.75rem;
+
+
+}
+
 
 .btn-sec{
     background-color: white;
@@ -70,7 +90,7 @@ footer button{
     cursor: pointer;
 }
 
-.cart-products, .wishlist-products{
+.cart-products, .wishlist-products, .search-products, .recomended-products{
     overflow: scroll;
     flex-grow: 1;
     & .nothing{

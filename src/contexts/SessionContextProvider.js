@@ -16,6 +16,7 @@ const emptyFilterInput = {
 const filterInputReducer = (filterInput, { action, payload }) => {
   switch (action) {
     case "UPDATE_SEARCH": {
+      console.log(payload);
       filterInput.search = payload;
       return { ...filterInput };
     }
@@ -66,6 +67,7 @@ const SessionContextProvider = ({ children }) => {
   const [wishlistActive, setWishlistActive] = useState(false);
   const [profileActive, setProfileActive] = useState(false);
   const [filterMenuActive, setFilterMenuActive] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
 
   const [filterInput, dispatchFilterInput] = useReducer(filterInputReducer, {
     ...emptyFilterInput,
@@ -82,6 +84,8 @@ const SessionContextProvider = ({ children }) => {
         profileActive,
         wishlistActive,
         filterInput,
+        searchActive,
+        setSearchActive,
       }}
     >
       {children}

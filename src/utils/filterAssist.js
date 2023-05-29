@@ -11,7 +11,7 @@ const filterProducts = (
   },
   products
 ) => {
-  if (search.length > 3) {
+  if (search) {
     products = products.filter(
       ({ name, brand }) =>
         name.toLowerCase().includes(search) ||

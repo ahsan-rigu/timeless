@@ -29,11 +29,11 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
         >
           clear filters
         </button>
-        <button>
-          <MdOutlineClose
-            size={24}
-            onClick={() => setMobileFilterMenu(false)}
-          />
+        <button
+          onClick={() => setMobileFilterMenu(false)}
+          className="mobile-only"
+        >
+          <MdOutlineClose size={24} />
         </button>
       </div>
       <div className="filter-block">

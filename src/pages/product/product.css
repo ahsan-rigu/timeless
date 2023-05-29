@@ -249,7 +249,7 @@
     
 }
 
-@media screen and (width<768px){
+@media screen and (width<25rem){
     
     .product-content{
         width: 95%;

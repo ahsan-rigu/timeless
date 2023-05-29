@@ -149,6 +149,10 @@ div.clear-and-close.filter-block{
         font-weight: 300;
     }
 }
+
+.mobile-only{
+    display: none;
+}
  
  
  
@@ -176,6 +180,10 @@ div.clear-and-close.filter-block{
  
      .filter-bar{
          display: block;
+     }
+
+     .mobile-only{
+        display: block;
      }
  
  }
