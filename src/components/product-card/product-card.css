@@ -9,6 +9,7 @@
     padding: 1rem 0rem;
     margin: .5rem;
     z-index: 1;
+    align-self: flex-start;
 }
 
 .product-card .rating{

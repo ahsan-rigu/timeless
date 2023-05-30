@@ -11,7 +11,33 @@ import { Link } from "react-router-dom";
 import { SessionContext } from "../../contexts/SessionContextProvider";
 import { DataContext } from "../../contexts/DataContextProvider";
 const Header = () => {
+  const { dispatchFilterInput } = useContext(SessionContext);
   const [mobileNavActive, setMobileNavActive] = useState(false);
+
+  const setGenderAndCategory = (gender, category) => {
+    dispatchFilterInput({ action: "CLEAR_ALL_FILTERS" });
+
+    if (gender !== "All") {
+      dispatchFilterInput({
+        action: "UPDATE_FILTER_CHECKBOXES",
+        payload: {
+          checked: true,
+          filterBlock: "genders",
+          value: gender,
+        },
+      });
+    }
+    if (category) {
+      dispatchFilterInput({
+        action: "UPDATE_FILTER_CHECKBOXES",
+        payload: {
+          checked: true,
+          filterBlock: "categories",
+          value: category,
+        },
+      });
+    }
+  };
 
   const {
     setProfileActive,
@@ -23,12 +49,20 @@ const Header = () => {
   return (
     <div className="wrapper">
       <header className="header-main">
-        <Link className="logo">TIMELESS</Link>
+        <Link to="/" className="logo">
+          TIMELESS
+        </Link>
         <nav className={mobileNavActive ? "active" : "inactive"}>
           <ul>
             {navData.map(({ _id, gender, image, categories }) => (
               <li className="nav-collection" key={_id}>
-                <Link className="nav-collection-button">{gender}</Link>
+                <Link
+                  className="nav-collection-button"
+                  to="/products"
+                  onClick={() => setGenderAndCategory(gender)}
+                >
+                  {gender}
+                </Link>
                 <aside className="nav-category-dropdown">
                   {categories.map(({ category, image }) => (
                     <figure
@@ -36,7 +70,12 @@ const Header = () => {
                       key={"nav-category-card" + category}
                     >
                       <img src={image} />
-                      <Link>{category}</Link>
+                      <Link
+                        to="/products"
+                        onClick={() => setGenderAndCategory(gender, category)}
+                      >
+                        {category}
+                      </Link>
                     </figure>
                   ))}
                 </aside>

@@ -28,11 +28,16 @@ header>nav{
 }
 
 nav li{
-    padding: .75rem;
+    padding: 1rem;
+    height: 100%;
 }
 
 nav li:hover{
+    padding-top: 1rem;
+    position: relative;
+    top: .25rem;
     background-color: var(--color-background-hover);
+    border-bottom: .25rem solid var(--color-black);
 }
 
 nav li .nav-category-dropdown{
@@ -42,7 +47,8 @@ nav li .nav-category-dropdown{
 nav li:hover .nav-category-dropdown{
     display: flex;
     justify-content: center;
-    position: absolute;
+    position: fixed;
+    padding-top: .75rem;
     z-index: -1;
     top: 2.75rem;
     left: 0rem;
@@ -156,12 +162,19 @@ header .icon{
         display: none;
     }
 
-    nav ul .nav-category-dropdown{
+    nav ul .nav-category-dropdown ,nav li:hover .nav-category-dropdown{
         animation: none;
         position: static;
         display: flex;
         flex-direction: column;
+        width: 100%;
+        border-bottom: none;
+        background-color: transparent;
+        & a:hover{
+            background-color: rgba(255, 200, 200, 0.317);
+        }
     }
+
     nav ul .nav-category-card{
         display: block;
         padding: 0;

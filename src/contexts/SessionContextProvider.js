@@ -52,10 +52,15 @@ const filterInputReducer = (filterInput, { action, payload }) => {
       return { ...filterInput };
     }
     case "CLEAR_ALL_FILTERS": {
+      filterInput.search = "";
+      filterInput.sort = "";
       filterInput.genders = [];
       filterInput.brands = [];
       filterInput.categories = [];
-      return { ...emptyFilterInput };
+      filterInput.maxPrice = 250000;
+      filterInput.minRating = 0;
+      filterInput.outOfStock = false;
+      return { ...filterInput };
     }
   }
 };
