@@ -15,15 +15,7 @@ const SignUpForm = ({ setFlipped }) => {
       password: event.target[2].value,
       wishlistItems,
       cartItems,
-      addresses: [
-        {
-          type: event.target[3].value,
-          street: event.target[4].value,
-          city: event.target[5].value,
-          state: event.target[6].value,
-          zip: event.target[7].value,
-        },
-      ],
+      addresses: [],
     };
     signUp(newUser);
   };
@@ -41,16 +33,6 @@ const SignUpForm = ({ setFlipped }) => {
       <label>
         PASSWORD
         <input type="password"></input>
-      </label>
-      <label className="address">
-        ADDRESS
-        <input type="text" placeholder="type"></input>
-        <input type="text" placeholder="street"></input>
-        <input type="text" placeholder="City" className="inline"></input>
-        <label className="wrapper-l">
-          <input type="text" placeholder="State" className="inline"></input>
-          <input type="number" placeholder="PIN" className="inline"></input>
-        </label>
       </label>
       <button type="submit">CREATE YOUR ACCOUNT</button>
       <button

@@ -4,7 +4,7 @@ export const SessionContext = createContext();
 
 const emptyFilterInput = {
   search: "",
-  sort: "",
+  sort: "R-HTL",
   genders: [],
   brands: [],
   categories: [],
@@ -53,7 +53,7 @@ const filterInputReducer = (filterInput, { action, payload }) => {
     }
     case "CLEAR_ALL_FILTERS": {
       filterInput.search = "";
-      filterInput.sort = "";
+      filterInput.sort = "R-HTL";
       filterInput.genders = [];
       filterInput.brands = [];
       filterInput.categories = [];

@@ -33,8 +33,8 @@ nav li{
 }
 
 nav li:hover{
-    padding-top: 1rem;
     position: relative;
+    padding-bottom: .75rem;
     top: .25rem;
     background-color: var(--color-background-hover);
     border-bottom: .25rem solid var(--color-black);

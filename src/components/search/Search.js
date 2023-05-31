@@ -19,15 +19,13 @@ const Search = () => {
 
   let liveSearchProdcuts = [];
 
-  if (searchQuery.length > 2) {
+  if (searchQuery) {
     liveSearchProdcuts = products.filter(
       ({ name, brand }) =>
         name.toLowerCase().includes(searchQuery) ||
         brand.toLowerCase().includes(searchQuery)
     );
   }
-
-  console.log(liveSearchProdcuts);
 
   const updateSearchAndNavigate = () => {
     dispatchFilterInput({ action: "CLEAR_ALL_FILTERS" });
@@ -40,8 +38,9 @@ const Search = () => {
     console.log(event.key);
     if (event.key === "Enter") {
       updateSearchAndNavigate();
+    } else {
+      setSearchQuery(event.target.value + event.key);
     }
-    setSearchQuery(event.target.value);
   };
 
   return (

@@ -55,6 +55,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
           <input
             type="radio"
             name="sort"
+            checked={filterInput.sort === "P-HTL"}
             onClick={(e) =>
               dispatchFilterInput({
                 action: "UPDATE_SORT",
@@ -68,6 +69,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
           <input
             type="radio"
             name="sort"
+            checked={filterInput.sort === "P-LTH"}
             onClick={(e) =>
               dispatchFilterInput({
                 action: "UPDATE_SORT",
@@ -81,6 +83,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
           <input
             type="radio"
             name="sort"
+            checked={filterInput.sort === "R-HTL"}
             onClick={(e) =>
               dispatchFilterInput({
                 action: "UPDATE_SORT",

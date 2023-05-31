@@ -9,6 +9,38 @@ const DataContextProvider = ({ children }) => {
   const [featuredData, setFeaturedData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const fakeReview = async () => {
+    try {
+      const res = await axios.post("http://localhost:8080/review", {
+        _id: "646408b385053d9ccf9e4c16",
+        email: "ahsanrigu@icloud.com",
+        rating: 5,
+        review: "blah blah ba",
+        name: "Ahsan Rigu",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fakeOrder = async () => {
+    try {
+      const res = await axios.post("http://localhost:8080/placeOrder", {
+        email: "ahsanrigu@icloud.com",
+        order: [
+          { _id: "646408b385053d9ccf9e4c14", quantity: 5 },
+          { _id: "646408b385053d9ccf9e4c15", quantity: 1 },
+          { _id: "646408b385053d9ccf9e4c16", quantity: 1 },
+        ],
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // fakeOrder();
+  // fakeReview();
+
   const fetchData = async () => {
     try {
       const {

@@ -11,6 +11,16 @@ const filterProducts = (
   },
   products
 ) => {
+  if (sort === "P-HTL") {
+    products.sort((a, b) => b.price - a.price);
+  }
+  if (sort === "P-LTH") {
+    products.sort((a, b) => a.price - b.price);
+  }
+  if (sort === "R-HTL") {
+    products.sort((a, b) => b.rating - a.rating);
+  }
+
   if (search) {
     products = products.filter(
       ({ name, brand }) =>

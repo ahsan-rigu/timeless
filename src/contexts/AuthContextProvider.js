@@ -52,7 +52,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const signOut = () => {
-    localStorage.setItem("token", null);
+    localStorage.setItem("token", "");
     setLoggedIn(false);
   };
 
@@ -63,6 +63,21 @@ const AuthContextProvider = ({ children }) => {
         password,
       });
       signOut();
+      if (res.status === 201) {
+        //toast something
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const changePassword = async (email, password, newPassword) => {
+    try {
+      const res = await axios.post("http://localhost:8080/changePassword", {
+        email,
+        password,
+        newPassword,
+      });
       if (res.status === 201) {
         //toast something
       }
@@ -85,6 +100,7 @@ const AuthContextProvider = ({ children }) => {
         deleteUser,
         loggedIn,
         setLoggedIn,
+        changePassword,
       }}
     >
       {children}

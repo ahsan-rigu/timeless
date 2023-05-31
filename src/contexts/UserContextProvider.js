@@ -14,21 +14,12 @@ const UserContextProvider = ({ children }) => {
   const { loggedIn, setLoggedIn } = useContext(AuthContext);
 
   const updateUser = async (user) => {
-    const updateUser = async (user) => {
-      try {
-        dispatchUserData({
-          action: "SET_USER",
-          payload: user,
-        });
-        const res = await axios.post(
-          "http://localhost:8080/updateUser",
-          userData
-        );
-      } catch (error) {
-        fetchUser();
-        console.log(error);
-      }
-    };
+    try {
+      const res = await axios.post("http://localhost:8080/updateUser", user);
+    } catch (error) {
+      fetchUser();
+      console.log(error);
+    }
   };
 
   const fetchUser = async () => {
@@ -64,7 +55,7 @@ const UserContextProvider = ({ children }) => {
         }
       }
     } else {
-      if (localStorage.getItem("localData")) {
+      if (!localStorage.getItem("localData")) {
         localStorage.setItem(
           "localData",
           JSON.stringify({ wishlistItems: [], cartItems: [] })
@@ -131,14 +122,20 @@ const UserContextProvider = ({ children }) => {
           return { ...userData };
         }
         case "ADD_ADDRESS": {
-          updateUser.addresses.push(payload.address);
+          userData.user.addresses.push(payload.address);
           updateUser(userData.user);
+          console.log(userData.user);
           return { ...userData };
         }
         case "REMOVE_ADDRESS": {
-          userData.user.addresses = updateUser.adresses.filter(
-            ({ type }) => type === payload.name
+          userData.user.addresses = userData.user.addresses.filter(
+            (el, index) => index != payload
           );
+          updateUser(userData.user);
+          return { ...userData };
+        }
+        case "UPDATE_ADDRESS": {
+          userData.user.addresses[payload.index] = payload.address;
           updateUser(userData.user);
           return { ...userData };
         }
@@ -205,6 +202,8 @@ const UserContextProvider = ({ children }) => {
     user: { cartItems: [], wishlistItems: [] },
     localUser: { cartItems: [], wishlistItems: [] },
   });
+
+  console.log(loggedIn);
 
   useEffect(() => {
     fetchUser();
