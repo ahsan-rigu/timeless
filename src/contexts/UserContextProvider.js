@@ -52,12 +52,14 @@ const UserContextProvider = ({ children }) => {
                 payload: item,
               });
             });
+            userData.localUser.wishlistItems = [];
             userData.localUser.cartItems.map((item) => {
               dispatchUserData({
                 action: "ADD_TO_CART",
                 payload: item,
               });
             });
+            userData.localUser.cartItems = [];
           }
           return "success";
         } catch (error) {

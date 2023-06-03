@@ -20,7 +20,7 @@ const Checkout = () => {
   var addAddressForm = document.querySelector("#addAddress");
   const [activeCoupon, setActiveCoupon] = useState(0);
   const navigate = useNavigate();
-  const { products, placeOrder } = useContext(DataContext);
+  const { products, placeOrder, setLoading } = useContext(DataContext);
   const { loggedIn } = useContext(AuthContext);
   const { userData, dispatchUserData, fetchUser } = useContext(UserContext);
 
@@ -59,6 +59,7 @@ const Checkout = () => {
   };
 
   const handlePlaceOrder = async () => {
+    setLoading(true);
     try {
       const res = await placeOrder(
         userData.user.email,
@@ -71,6 +72,7 @@ const Checkout = () => {
       toast.error("Order Failed!");
     } finally {
       navigate("/");
+      setLoading(false);
     }
   };
 
@@ -196,8 +198,7 @@ const Checkout = () => {
           </h5>
           {
             <h5>
-              Coupon Discount:{" "}
-              <span>{Math.round((1 - activeCoupon) * 100)}%</span>{" "}
+              Coupon Discount: <span>{Math.round(activeCoupon * 100)}%</span>{" "}
             </h5>
           }
           <h4>

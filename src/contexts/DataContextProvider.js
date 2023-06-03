@@ -73,6 +73,7 @@ const DataContextProvider = ({ children }) => {
         navData,
         featuredData,
         loading,
+        setLoading,
         updateReview,
         placeOrder,
       }}
