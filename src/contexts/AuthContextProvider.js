@@ -22,11 +22,9 @@ const AuthContextProvider = ({ children }) => {
           setLoggedIn(true);
           return 200;
         }
-        throw new Error(400);
       } catch (error) {
         toast.error("Logged Out");
         localStorage.setItem("token", null);
-        throw new Error(400);
       }
     }
   };

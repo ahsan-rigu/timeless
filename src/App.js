@@ -13,6 +13,7 @@ import Profile from "./components/profile/Profile";
 import Wishlist from "./components/wishlist/Wishlist";
 import Search from "./components/search/Search";
 import { Toaster } from "react-hot-toast";
+import Loader from "./components/loader/Loader";
 
 function App() {
   const { loading } = useContext(DataContext);
@@ -35,7 +36,7 @@ function App() {
       <Toaster position="top-center" />
     </>
   ) : (
-    <p>Loading</p>
+    <Loader />
   );
 }
 
