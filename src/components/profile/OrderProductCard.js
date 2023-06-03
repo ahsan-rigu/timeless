@@ -65,19 +65,19 @@ const OrderProductCard = ({
         {!delivered ? (
           <>
             <h5>Estimated Delivery time: {estimatedDeliveryTime} days</h5>
-            <button className="top-right" onClick={handleDelivered}>
+            <button className="review-btn" onClick={handleDelivered}>
               Delivered?
             </button>
           </>
         ) : !reviewed ? (
           <button
-            className="top-right"
+            className="review-btn"
             onClick={() => setShowReviewModal(true)}
           >
             Review
           </button>
         ) : (
-          <p>reviewed</p>
+          <p className="review-btn">Reviewed</p>
         )}
       </div>
       {showReviewModel && (

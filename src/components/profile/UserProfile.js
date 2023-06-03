@@ -116,7 +116,7 @@ const UserProfile = () => {
         {user?.orders?.map((order, index) => {
           return (
             <details className="order-container" key={"order" + index}>
-              <summary>Order: {index + 1}</summary>
+              <summary>Order No. {index + 1}</summary>
               {order?.map((product, productIndex) => (
                 <OrderProductCard
                   key={"ordercard" + index + productIndex}

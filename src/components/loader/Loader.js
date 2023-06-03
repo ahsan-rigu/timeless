@@ -24,20 +24,22 @@ const Loader = () => {
 
   return (
     <div className="container-clock">
-      <div class="clock">
-        <div class="wrap">
-          <span class="hour" style={{ transform: `rotate(${hour}deg)` }}></span>
+      <div className="clock">
+        <div className="wrap">
           <span
-            class="minute"
+            className="hour"
+            style={{ transform: `rotate(${hour}deg)` }}
+          ></span>
+          <span
+            className="minute"
             style={{ transform: `rotate(${minute}deg)` }}
           ></span>
           <span
-            class="second"
+            className="second"
             style={{ transform: `rotate(${second}deg)` }}
           ></span>
-          <span class="dot"></span>
+          <span className="dot"></span>
         </div>
-        <h1>LOADING...</h1>
       </div>
     </div>
   );

@@ -26,6 +26,7 @@ justify-content: center;
         color: var(--color-black);
         font-size: large;
         font-weight: 300;
+        z-index: 2;
         background-color: white;
 
     }
@@ -42,6 +43,31 @@ justify-content: center;
         background-color: rgb(236, 254, 236);
         border: 1px solid var(--color-light-grey);
     }
+}
+
+
+
+.checkout-payment div{
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-payment .btn-prime{
+    background-color: var(--color-black);
+    width: 100%;
+    margin-inline: 0;
+    color: white;
+}
+
+
+.checkout-payment div h4{
+    border-bottom: 1px solid var(--color-black);
+    margin-block:.5rem ;
+}
+
+.checkout-payment div span{
+ float: right;
 }
 
 @media  (width <= 1224px) {

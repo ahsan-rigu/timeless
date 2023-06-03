@@ -32,6 +32,40 @@
 .product-card:hover{
     border: 1px solid rgb(217, 217, 217);
 }
+.oos-card, .oos-card:hover{
+    border: 1px solid rgb(255, 225, 225);
+}
+
+.btn-prime.btn-disabled.oos-banner{
+    border-block:1px solid rgb(255, 225, 225) ;
+    text-align: center;
+    border-inline: none;
+    width: 100%;
+    position: relative;
+    left: -.85rem;
+    overflow: hidden;
+
+    
+}
+
+.btn-prime.btn-disabled.oos-banner h5{
+    font-family: 'Courier New', Courier, monospace;
+    white-space: nowrap;
+    animation: 10s infinite normal slide-right;
+    color: rgb(255, 151, 151);
+    height: 100%;
+    margin: auto;
+    transition-timing-function: linear;
+}
+
+@keyframes slide-right {
+    from {
+      transform: translateX(-106%);
+    }
+    to {
+      transform: translateX(-5%);
+    }
+  }
 
 
 .product-card>.img-card{
@@ -76,6 +110,10 @@
 
 .btn-prime.btn-disabled{
     background-color: transparent;
+    &:hover{
+        background-color: transparent;
+        border-inline: none;
+    }
 }
 
 .btn-prime:hover{

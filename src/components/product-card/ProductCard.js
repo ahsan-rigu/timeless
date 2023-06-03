@@ -45,7 +45,7 @@ const ProductCard = ({
   }
 
   return (
-    <div className="product-card">
+    <div className={quantity > 0 ? "product-card" : "product-card oos-card"}>
       <img
         src={img}
         className="img-card"
@@ -76,7 +76,12 @@ const ProductCard = ({
           ADD TO CART
         </button>
       ) : (
-        <button className="btn-prime btn-disabled">OUT OF STOCK</button>
+        <div className="btn-prime btn-disabled oos-banner">
+          <h5>
+            -----OUT OF STOCK-----OUT OF STOCK-----OUT OF STOCK-----OUT OF
+            STOCK-----
+          </h5>
+        </div>
       )}
       <span className="category">{category}</span>
       {isInWishList ? (

@@ -76,7 +76,7 @@ const Checkout = () => {
   const verifyPayment = async () => {
     const options = {
       key: "rzp_test_ixmrdq6mjGP3f2",
-      amount: totalPrice * (activeCoupon || 1) * 100,
+      amount: Math.round(totalPrice * (activeCoupon || 1)),
       currency: "INR",
       name: "TIMELESS",
       description: "WHY BE TIMEBOUND",
@@ -196,14 +196,16 @@ const Checkout = () => {
           {
             <h5>
               Coupon Discount:{" "}
-              <span>{Math.round((1 - activeCoupon) * 100)}</span>%{" "}
+              <span>{Math.round((1 - activeCoupon) * 100)}%</span>{" "}
             </h5>
           }
           <h4>
             Final Price:<span>${totalPrice * (activeCoupon || 1)}</span>{" "}
           </h4>
+          <button onClick={verifyPayment} className="btn-prime">
+            PAY
+          </button>
         </div>
-        <button onClick={verifyPayment}>PAY</button>
       </section>
       <section className="checkout-products">
         <header>order summary</header>

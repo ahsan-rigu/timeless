@@ -96,7 +96,6 @@ const UserContextProvider = ({ children }) => {
             const { quantity } = products.find(
               ({ _id }) => _id === payload._id
             );
-            console.log(quantity, payload);
             if (
               quantity <
               payload.quantity + userData.user.cartItems[index].quantity
@@ -126,17 +125,6 @@ const UserContextProvider = ({ children }) => {
             }
           }
         }
-        case "REMOVE_FROM_CART": {
-          userData.user.cartItems = userData.user.cartItems.filter(
-            (item) => item._id !== payload._id
-          );
-          toast.promise(updateUser(userData.user), {
-            loading: "Removing From Cart",
-            success: "Removed From Cart",
-            error: <b>Cant Remove!</b>,
-          });
-          return { ...userData };
-        }
         case "ADD_TO_WISHLIST": {
           const index = userData.user.wishlistItems.findIndex(
             (item) => item._id === payload._id
@@ -163,6 +151,19 @@ const UserContextProvider = ({ children }) => {
               error: <b>Cant Remove!</b>,
             });
           }
+          return { ...userData };
+        }
+
+        case "REMOVE_FROM_CART": {
+          userData.user.cartItems = userData.user.cartItems.filter(
+            (item) => item._id !== payload._id
+          );
+          console.log(action, payload);
+          toast.promise(updateUser(userData.user), {
+            loading: "Removing From Cart",
+            success: "Removed From Cart",
+            error: <b>Cant Remove!</b>,
+          });
           return { ...userData };
         }
         case "REMOVE_FROM_WISHLIST": {

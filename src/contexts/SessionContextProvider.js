@@ -65,8 +65,6 @@ const filterInputReducer = (filterInput, { action, payload }) => {
   }
 };
 
-console.log(emptyFilterInput);
-
 const SessionContextProvider = ({ children }) => {
   const [cartActive, setCartActive] = useState(false);
   const [wishlistActive, setWishlistActive] = useState(false);
