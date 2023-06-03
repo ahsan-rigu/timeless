@@ -67,12 +67,13 @@ const Checkout = () => {
       );
       await fetchUser();
       dispatchUserData({ action: "CLEAR_CART" });
+      setLoading(false);
       toast.success("Order Placed!");
     } catch (error) {
+      setLoading(false);
       toast.error("Order Failed!");
     } finally {
       navigate("/");
-      setLoading(false);
     }
   };
 
@@ -204,9 +205,13 @@ const Checkout = () => {
           <h4>
             Final Price:<span>${totalPrice * (activeCoupon || 1)}</span>{" "}
           </h4>
-          <button onClick={verifyPayment} className="btn-prime">
-            PAY
-          </button>
+          {userData.user.addresses > 0 ? (
+            <button onClick={verifyPayment} className="btn-prime">
+              PAY
+            </button>
+          ) : (
+            <button className="btn-prime">PLEASE ADD AN ADDRESS</button>
+          )}
         </div>
       </section>
       <section className="checkout-products">
