@@ -165,4 +165,10 @@ border-color: var(--color-black);
   z-index: 950;
 }
 
+.thumbnail-for-list{
+  cursor: pointer;
+}
 
+.pointer{
+  cursor: pointer;
+}

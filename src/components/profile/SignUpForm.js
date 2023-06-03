@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContextProvider";
+import { toast } from "react-hot-toast";
 
 const SignUpForm = ({ setFlipped }) => {
   const { signUp } = useContext(AuthContext);
@@ -17,7 +18,11 @@ const SignUpForm = ({ setFlipped }) => {
       cartItems,
       addresses: [],
     };
-    signUp(newUser);
+    toast.promise(signUp(newUser), {
+      loading: "Creating Your Account...",
+      success: <b>Account Created!</b>,
+      error: <b>Email Already Exists!</b>,
+    });
   };
   return (
     <form onSubmit={handleSignUp} className="signup-form">

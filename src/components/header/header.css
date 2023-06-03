@@ -86,6 +86,11 @@ nav li:hover .nav-category-dropdown{
     border: 1px solid var(--color-light-grey);
 }
 
+.nav-category-card a:has(img){
+    outline: none;
+    border: none;
+  }
+
 .nav-category-card a{
     text-align: center;
     padding: .25rem 0;

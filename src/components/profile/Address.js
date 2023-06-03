@@ -9,16 +9,21 @@ const Address = ({
   const [isReadOnly, setIsReadOnly] = useState(true);
   const editAddress = (event, index) => {
     event.preventDefault();
-    const address = {
-      name: event.target[0].value,
-      phone: event.target[1].value,
-      street: event.target[2].value,
-      city: event.target[3].value,
-      state: event.target[4].value,
-      pin: event.target[5].value,
-    };
-    dispatchUserData({ action: "UPDATE_ADDRESS", payload: { address, index } });
-    setIsReadOnly(true);
+    if (!isReadOnly) {
+      const address = {
+        name: event.target[0].value,
+        phone: event.target[1].value,
+        street: event.target[2].value,
+        city: event.target[3].value,
+        state: event.target[4].value,
+        pin: event.target[5].value,
+      };
+      dispatchUserData({
+        action: "UPDATE_ADDRESS",
+        payload: { address, index },
+      });
+      setIsReadOnly(true);
+    }
   };
   return (
     <form onSubmit={(e) => editAddress(e, index)} className="form-edit">

@@ -45,7 +45,6 @@ const Search = () => {
     }
   };
 
-  console.log(filterInput);
   return (
     <div
       className={searchActive ? "search-container active" : "search-container"}

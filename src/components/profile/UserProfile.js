@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/AuthContextProvider";
 import { CiTrash } from "react-icons/ci";
 import Address from "./Address";
 import OrderProductCard from "./OrderProductCard";
+import { toast } from "react-hot-toast";
 
 const UserProfile = () => {
   var addAddressForm = document.querySelector("#addAddress");
@@ -37,7 +38,7 @@ const UserProfile = () => {
           SIGN OUT
         </button>
       </article>
-      <details className="addresses">
+      <details className="addresses" key={"addressess-form"}>
         <summary>Manage Addresses</summary>
         {user.addresses?.map((address, index) => (
           <Address
@@ -48,7 +49,7 @@ const UserProfile = () => {
           />
         ))}
       </details>
-      <details className="details-form">
+      <details className="details-form" key={"add-address-form"}>
         <summary>Add Address</summary>
         <form id="addAddress" onSubmit={addAddress}>
           <label>
@@ -114,10 +115,11 @@ const UserProfile = () => {
         <summary>Orders & Review</summary>
         {user?.orders?.map((order, index) => {
           return (
-            <details className="order-container">
+            <details className="order-container" key={"order" + index}>
               <summary>Order: {index + 1}</summary>
               {order?.map((product, productIndex) => (
                 <OrderProductCard
+                  key={"ordercard" + index + productIndex}
                   product={{ ...product, orderIndex: index, productIndex }}
                 />
               ))}
@@ -125,11 +127,19 @@ const UserProfile = () => {
           );
         })}
       </details>
-      <details className="details-form">
+      <details className="details-form" key={"change-password-form"}>
         <summary>Change Password</summary>
         <form
           onSubmit={(e) =>
-            changePassword(user.email, e.target[0].value, e.target[1].value)
+            e.preventDefault() ||
+            toast.promise(
+              changePassword(user.email, e.target[0].value, e.target[1].value),
+              {
+                loading: "Changing password",
+                success: <b>Password Changed</b>,
+                error: <b>Password Doesnt Match</b>,
+              }
+            )
           }
         >
           <label>
@@ -151,9 +161,18 @@ const UserProfile = () => {
           </button>
         </form>
       </details>
-      <details className="details-form">
+      <details className="details-form" key={"delete-acc-form"}>
         <summary>Delete Account</summary>
-        <form onSubmit={(e) => deleteUser(user.email, e.target[0].value)}>
+        <form
+          onSubmit={(e) =>
+            e.preventDefault() ||
+            toast.promise(deleteUser(user.email, e.target[0].value), {
+              loading: "Deleting Account...",
+              success: <b>Account Deleted</b>,
+              error: <b>Password Invalid</b>,
+            })
+          }
+        >
           <label>
             <input type="text" required={true} placeholder="password"></input>
           </label>

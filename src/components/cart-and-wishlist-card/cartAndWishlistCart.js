@@ -4,14 +4,17 @@ import { BsArrowBarRight } from "react-icons/bs";
 import { CiHeart, CiShoppingCart, CiTrash } from "react-icons/ci";
 import { DataContext } from "../../contexts/DataContextProvider";
 import { UserContext } from "../../contexts/UserContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const ProductInCart = ({ _id, quantity, fromCart, fromWishlist }) => {
   const { products } = useContext(DataContext);
   const { dispatchUserData } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const {
     brand,
     name,
+    id,
     images: [image],
     price,
     discount,
@@ -61,7 +64,11 @@ const ProductInCart = ({ _id, quantity, fromCart, fromWishlist }) => {
 
   return (
     <article className="product-in-cart">
-      <img src={image} className="thumbnail-for-list" />
+      <img
+        src={image}
+        className="thumbnail-for-list"
+        onClick={() => navigate("/products/" + id)}
+      />
       <div className="content">
         <h4>{brand}</h4>
         <h5>{name}</h5>
@@ -74,7 +81,7 @@ const ProductInCart = ({ _id, quantity, fromCart, fromWishlist }) => {
             <button disabled={quantity === 1} onClick={() => addHandler(-1)}>
               -
             </button>
-            <input type="number" value={quantity} readOnly />
+            <input type="text" value={quantity + "/" + inStock} readOnly />
             <button onClick={() => addHandler(1)}>+</button>
           </span>
           <button onClick={removeHandler}>

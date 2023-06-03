@@ -9,6 +9,7 @@ import ProductInCart from "../../components/cart-and-wishlist-card/cartAndWishli
 import Address from "../../components/profile/Address";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-hot-toast";
 
 const Checkout = () => {
   const coupons = [
@@ -23,7 +24,9 @@ const Checkout = () => {
   const { loggedIn } = useContext(AuthContext);
   const { userData, dispatchUserData, fetchUser } = useContext(UserContext);
 
-  if (!loggedIn) {
+  const items = userData.user.cartItems;
+
+  if (!loggedIn || items.length < 1) {
     navigate("/");
   }
 
@@ -40,8 +43,6 @@ const Checkout = () => {
     addAddressForm.reset();
     dispatchUserData({ action: "ADD_ADDRESS", payload: { address } });
   };
-
-  const items = userData.user.cartItems;
 
   const totalPrice = items.reduce((acc, { _id, quantity }) => {
     const { price, discount } = products.find((product) => product._id === _id);
@@ -65,8 +66,9 @@ const Checkout = () => {
       );
       await fetchUser();
       dispatchUserData({ action: "CLEAR_CART" });
+      toast.success("Order Placed!");
     } catch (error) {
-      //toast
+      toast.error("Order Failed!");
     } finally {
       navigate("/");
     }

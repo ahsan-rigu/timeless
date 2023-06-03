@@ -69,7 +69,12 @@ const Header = () => {
                       className="nav-category-card"
                       key={"nav-category-card" + category}
                     >
-                      <img src={image} />
+                      <Link
+                        to="/products"
+                        onClick={() => setGenderAndCategory(gender, category)}
+                      >
+                        <img src={image} className="pointer" />
+                      </Link>
                       <Link
                         to="/products"
                         onClick={() => setGenderAndCategory(gender, category)}

@@ -50,9 +50,11 @@ const Cart = () => {
         </div>
         <footer>
           {loggedIn ? (
-            <button
-              onClick={() => navigate("/checkout")}
-            >{`$${totalPrice} | CHEKOUT->`}</button>
+            items.length > 0 && (
+              <button
+                onClick={() => navigate("/checkout") || setCartActive(false)}
+              >{`$${totalPrice} | CHEKOUT->`}</button>
+            )
           ) : (
             <button onClick={() => setProfileActive(true)}>LOG IN</button>
           )}

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContextProvider";
 import { DataContext } from "../../contexts/DataContextProvider";
 import Rating from "../Rating";
+import { useNavigate } from "react-router-dom";
 
 const OrderProductCard = ({
   product: { _id, quantity, reviewed, delivered, orderIndex, productIndex },
@@ -9,9 +10,11 @@ const OrderProductCard = ({
   const [showReviewModel, setShowReviewModal] = useState(false);
   const { products, updateReview } = useContext(DataContext);
   const { dispatchUserData, userData } = useContext(UserContext);
+  const navigate = useNavigate();
   const {
     brand,
     name,
+    id,
     images: [image],
     price,
     discount,
@@ -47,7 +50,11 @@ const OrderProductCard = ({
 
   return (
     <article className="product-in-cart">
-      <img src={image} className="thumbnail-for-list" />
+      <img
+        src={image}
+        className="thumbnail-for-list"
+        onClick={() => navigate("/products/" + id)}
+      />
       <div className="content">
         <h4>{brand}</h4>
         <h5>{name}</h5>

@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { AuthContext } from "./AuthContextProvider";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 export const UserContext = createContext();
 
@@ -15,10 +16,14 @@ const UserContextProvider = ({ children }) => {
 
   const updateUser = async (user) => {
     try {
-      const res = await axios.post("http://localhost:8080/updateUser", user);
+      const res = await axios.post(
+        "https://timeless-backend.onrender.com/updateUser",
+        user
+      );
+      return "success";
     } catch (error) {
       fetchUser();
-      console.log(error);
+      throw new Error(400);
     }
   };
 
@@ -27,9 +32,12 @@ const UserContextProvider = ({ children }) => {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const res = await axios.get("http://localhost:8080/fetch-user", {
-            headers: { authorization: `Bearer ${token}` },
-          });
+          const res = await axios.get(
+            "https://timeless-backend.onrender.com/fetch-user",
+            {
+              headers: { authorization: `Bearer ${token}` },
+            }
+          );
           if (res.status === 200) {
             dispatchUserData({
               action: "SET_USER",
@@ -89,14 +97,30 @@ const UserContextProvider = ({ children }) => {
                 userData.user.cartItems[index].quantity + payload.quantity,
             };
           }
-          updateUser(userData.user);
+          if (payload.quantity > 0) {
+            toast.promise(updateUser(userData.user), {
+              loading: "Adding To Cart...",
+              success: "Added To cart",
+              error: <b>Cant Add</b>,
+            });
+          } else {
+            toast.promise(updateUser(userData.user), {
+              loading: "Removing From Cart",
+              success: "Removed From Cart",
+              error: <b>Cant Remove!</b>,
+            });
+          }
           return { ...userData };
         }
         case "REMOVE_FROM_CART": {
           userData.user.cartItems = userData.user.cartItems.filter(
             (item) => item._id !== payload._id
           );
-          updateUser(userData.user);
+          toast.promise(updateUser(userData.user), {
+            loading: "Removing From Cart",
+            success: "Removed From Cart",
+            error: <b>Cant Remove!</b>,
+          });
           return { ...userData };
         }
         case "ADD_TO_WISHLIST": {
@@ -112,32 +136,59 @@ const UserContextProvider = ({ children }) => {
                 userData.user.wishlistItems[index].quantity + payload.quantity,
             };
           }
-          updateUser(userData.user);
+          if (payload.quantity > 0) {
+            toast.promise(updateUser(userData.user), {
+              loading: "Adding To Wishlist...",
+              success: "Added To Wishlist",
+              error: <b>Cant Add</b>,
+            });
+          } else {
+            toast.promise(updateUser(userData.user), {
+              loading: "Removing From Wishlist",
+              success: "Removed From Wishlist",
+              error: <b>Cant Remove!</b>,
+            });
+          }
           return { ...userData };
         }
         case "REMOVE_FROM_WISHLIST": {
           userData.user.wishlistItems = userData.user.wishlistItems.filter(
             (item) => item._id !== payload._id
           );
-          updateUser(userData.user);
+          toast.promise(updateUser(userData.user), {
+            loading: "Removing Form Wishlist...",
+            success: "Removed From Wishlist",
+            error: <b>Cant remove</b>,
+          });
           return { ...userData };
         }
         case "ADD_ADDRESS": {
           userData.user.addresses.push(payload.address);
-          updateUser(userData.user);
-          console.log(userData.user);
+          toast.promise(updateUser(userData.user), {
+            loading: "Adding Address...",
+            success: "Address Added",
+            error: <b>Cant Add</b>,
+          });
           return { ...userData };
         }
         case "REMOVE_ADDRESS": {
           userData.user.addresses = userData.user.addresses.filter(
             (el, index) => index != payload
           );
-          updateUser(userData.user);
+          toast.promise(updateUser(userData.user), {
+            loading: "Removing Address...",
+            success: "Address Removed",
+            error: <b>Cant Remove</b>,
+          });
           return { ...userData };
         }
         case "UPDATE_ADDRESS": {
           userData.user.addresses[payload.index] = payload.address;
-          updateUser(userData.user);
+          toast.promise(updateUser(userData.user), {
+            loading: "Updating Address...",
+            success: "Address Updated",
+            error: <b>Cant Update</b>,
+          });
           return { ...userData };
         }
         case "UPDATE_DELIVERED": {
@@ -145,13 +196,18 @@ const UserContextProvider = ({ children }) => {
             payload.productIndex
           ].delivered = true;
           updateUser(userData.user);
+          toast.success("Delivered!");
           return { ...userData };
         }
         case "UPDATE_REVIEW": {
           userData.user.orders[payload.orderIndex][
             payload.productIndex
           ].reviewed = true;
-          updateUser(userData.user);
+          toast.promise(updateUser(userData.user), {
+            loading: " Posting Review...",
+            success: "Review Posted",
+            error: <b>Review Failed</b>,
+          });
           return { ...userData };
         }
         case "CLEAR_CART": {
@@ -180,6 +236,11 @@ const UserContextProvider = ({ children }) => {
             };
           }
           localStorage.setItem("localData", JSON.stringify(userData.localUser));
+          if (payload.quantity > 0) {
+            toast.success("Added To Cart");
+          } else {
+            toast.success("Removed From Cart");
+          }
           return { ...userData };
         }
         case "REMOVE_FROM_CART": {
@@ -187,6 +248,7 @@ const UserContextProvider = ({ children }) => {
             (item) => item._id !== payload._id
           );
           localStorage.setItem("localData", JSON.stringify(userData.localUser));
+          toast.success("Removed From Cart");
           return { ...userData };
         }
         case "ADD_TO_WISHLIST": {
@@ -204,6 +266,12 @@ const UserContextProvider = ({ children }) => {
             };
           }
           localStorage.setItem("localData", JSON.stringify(userData.localUser));
+          if (payload.quantity > 0) {
+            toast.success("Added To Wishlist");
+          } else {
+            toast.success("Removed From Wishlist");
+          }
+
           return { ...userData };
         }
         case "REMOVE_FROM_WISHLIST": {
@@ -212,6 +280,7 @@ const UserContextProvider = ({ children }) => {
               (item) => item._id !== payload._id
             );
           localStorage.setItem("localData", JSON.stringify(userData.localUser));
+          toast.success("Removed From Wishlist");
           return { ...userData };
         }
       }
@@ -222,8 +291,6 @@ const UserContextProvider = ({ children }) => {
     user: { cartItems: [], wishlistItems: [] },
     localUser: { cartItems: [], wishlistItems: [] },
   });
-
-  console.log(loggedIn);
 
   useEffect(() => {
     fetchUser();

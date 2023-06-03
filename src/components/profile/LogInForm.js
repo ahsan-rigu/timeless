@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContextProvider";
+import { toast } from "react-hot-toast";
 
 const LogInForm = ({ setFlipped }) => {
   const { signIn } = useContext(AuthContext);
@@ -8,7 +9,11 @@ const LogInForm = ({ setFlipped }) => {
     event.preventDefault();
     const email = event.target[0].value;
     const password = event.target[1].value;
-    signIn(email, password);
+    toast.promise(signIn(email, password), {
+      loading: "Logging in...",
+      success: <b>Logged In</b>,
+      error: <b>Cant find user</b>,
+    });
   };
 
   return (

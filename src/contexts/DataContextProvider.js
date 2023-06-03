@@ -12,22 +12,28 @@ const DataContextProvider = ({ children }) => {
   const updateReview = async (review) => {
     try {
       console.log(review);
-      const res = await axios.post("http://localhost:8080/review", review);
-      //review is an object with _id name rating and review
+      const res = await axios.post(
+        "https://timeless-backend.onrender.com/review",
+        review
+      );
+      return "success";
     } catch (error) {
-      console.log(error);
+      throw new Error(400);
     }
   };
 
   const placeOrder = async (email, order) => {
     try {
-      const res = await axios.post("http://localhost:8080/placeOrder", {
-        email,
-        order,
-      });
+      const res = await axios.post(
+        "https://timeless-backend.onrender.com/placeOrder",
+        {
+          email,
+          order,
+        }
+      );
       return "success";
     } catch (error) {
-      console.log(error);
+      throw new Error(400);
     }
   };
 
@@ -38,18 +44,19 @@ const DataContextProvider = ({ children }) => {
     try {
       const {
         data: { products },
-      } = await axios.get("http://localhost:8080/products");
+      } = await axios.get("https://timeless-backend.onrender.com/products");
       const {
         data: { navData },
-      } = await axios.get("http://localhost:8080/nav-data");
+      } = await axios.get("https://timeless-backend.onrender.com/nav-data");
       const {
         data: { featuredData },
-      } = await axios.get("http://localhost:8080/featured");
+      } = await axios.get("https://timeless-backend.onrender.com/featured");
       setProducts(products);
       setNavData(navData);
       setFeaturedData(featuredData);
+      return "success";
     } catch (error) {
-      console.error(error);
+      throw new Error(400);
     } finally {
       setLoading(false);
     }

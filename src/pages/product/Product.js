@@ -178,8 +178,12 @@ const Product = () => {
         </section>
       </section>
       <section title="reviews" className="reviews-container">
-        {reviews.map(({ name, rating, review }) => (
-          <article title="review" className="review-container">
+        {reviews.map(({ name, rating, review }, index) => (
+          <article
+            title="review"
+            className="review-container"
+            key={review + index}
+          >
             <div>
               <h3 className="name">By: {name}</h3>
               <span className="rating-review">
