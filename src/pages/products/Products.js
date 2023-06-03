@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./products.css";
 import { MdOutlineClose } from "react-icons/md";
 import { CiFilter } from "react-icons/ci";
@@ -15,6 +15,10 @@ const Products = () => {
   const [mobileFilterMenu, setMobileFilterMenu] = useState(false);
 
   const filteredProducts = filterProducts(filterInput, products);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

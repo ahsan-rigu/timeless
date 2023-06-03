@@ -14,9 +14,11 @@ import Wishlist from "./components/wishlist/Wishlist";
 import Search from "./components/search/Search";
 import { Toaster } from "react-hot-toast";
 import Loader from "./components/loader/Loader";
+import { createBrowserHistory } from "history";
 
 function App() {
   const { loading } = useContext(DataContext);
+
   return !loading ? (
     <>
       <Header />

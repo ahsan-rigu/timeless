@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./checkout.css";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../contexts/DataContextProvider";
@@ -89,6 +89,10 @@ const Checkout = () => {
     const razor = new window.Razorpay(options);
     razor.open();
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="checkout-page">
