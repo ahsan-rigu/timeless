@@ -137,6 +137,11 @@ const UserContextProvider = ({ children }) => {
           );
           if (index === -1) {
             userData.user.wishlistItems.push(payload);
+            toast.promise(updateUser(userData.user), {
+              loading: "Adding To Wishlist...",
+              success: "Added To Wishlist",
+              error: <b>Cant Add</b>,
+            });
             return { ...userData };
           } else {
             userData.user.wishlistItems[index] = {
