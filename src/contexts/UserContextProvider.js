@@ -49,6 +49,7 @@ const UserContextProvider = ({ children }) => {
               });
             });
           }
+          return "success";
         } catch (error) {
           localStorage.setItem("token", null);
           setLoggedIn(false);
@@ -88,8 +89,8 @@ const UserContextProvider = ({ children }) => {
                 userData.user.cartItems[index].quantity + payload.quantity,
             };
           }
-          return { ...userData };
           updateUser(userData.user);
+          return { ...userData };
         }
         case "REMOVE_FROM_CART": {
           userData.user.cartItems = userData.user.cartItems.filter(
@@ -136,6 +137,25 @@ const UserContextProvider = ({ children }) => {
         }
         case "UPDATE_ADDRESS": {
           userData.user.addresses[payload.index] = payload.address;
+          updateUser(userData.user);
+          return { ...userData };
+        }
+        case "UPDATE_DELIVERED": {
+          userData.user.orders[payload.orderIndex][
+            payload.productIndex
+          ].delivered = true;
+          updateUser(userData.user);
+          return { ...userData };
+        }
+        case "UPDATE_REVIEW": {
+          userData.user.orders[payload.orderIndex][
+            payload.productIndex
+          ].reviewed = true;
+          updateUser(userData.user);
+          return { ...userData };
+        }
+        case "CLEAR_CART": {
+          userData.user.cartItems = [];
           updateUser(userData.user);
           return { ...userData };
         }
@@ -210,7 +230,7 @@ const UserContextProvider = ({ children }) => {
   }, [loggedIn]);
 
   return (
-    <UserContext.Provider value={{ userData, dispatchUserData }}>
+    <UserContext.Provider value={{ userData, dispatchUserData, fetchUser }}>
       {children}
     </UserContext.Provider>
   );

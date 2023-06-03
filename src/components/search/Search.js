@@ -11,7 +11,7 @@ import Rating from "../Rating";
 
 const Search = () => {
   const { products } = useContext(DataContext);
-  const { dispatchFilterInput } = useContext(SessionContext);
+  const { dispatchFilterInput, filterInput } = useContext(SessionContext);
   const { searchActive, setSearchActive } = useContext(SessionContext);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -34,15 +34,18 @@ const Search = () => {
     navigate("/products");
   };
 
-  const searchHandler = (event) => {
+  const liveSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const submitSearch = (event) => {
     console.log(event.key);
     if (event.key === "Enter") {
       updateSearchAndNavigate();
-    } else {
-      setSearchQuery(event.target.value + event.key);
     }
   };
 
+  console.log(filterInput);
   return (
     <div
       className={searchActive ? "search-container active" : "search-container"}
@@ -60,7 +63,8 @@ const Search = () => {
               name="search"
               placeholder="search"
               autoFocus
-              onKeyDown={searchHandler}
+              onKeyDown={submitSearch}
+              onChange={liveSearch}
             />
           )}
           <MdOutlineClose

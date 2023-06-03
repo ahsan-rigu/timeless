@@ -153,9 +153,16 @@ header .icon{
         flex-direction: column;
     }
 
+    nav li:hover{position: static;
+    padding-bottom: 1rem;
+    background-color: transparent;
+    border-bottom: none;
+    }
+
     nav li:hover *{
         background-color: transparent;
         border-bottom: none;
+        
     }
 
     nav ul .nav-category-card img{
@@ -171,7 +178,8 @@ header .icon{
         border-bottom: none;
         background-color: transparent;
         & a:hover{
-            background-color: rgba(255, 200, 200, 0.317);
+            background-color: transparent;
+            color: blue;
         }
     }
 

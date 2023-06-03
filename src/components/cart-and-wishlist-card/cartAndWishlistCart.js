@@ -34,18 +34,13 @@ const ProductInCart = ({ _id, quantity, fromCart, fromWishlist }) => {
       dispatchUserData({ action: "REMOVE_FROM_CART", payload: { _id } });
     };
     addHandler = (toAdd) => {
-      dispatchUserData({
-        action: "ADD_TO_CART",
-        payload: { _id, quantity: toAdd },
-      });
+      if (quantity <= inStock) {
+        dispatchUserData({
+          action: "ADD_TO_CART",
+          payload: { _id, quantity: toAdd },
+        });
+      }
     };
-    if (quantity > inStock) {
-      //toast here
-      dispatchUserData({
-        action: "ADD_TO_CART",
-        payload: { _id, quantity: inStock - quantity },
-      });
-    }
   }
 
   if (fromWishlist) {

@@ -3,6 +3,7 @@ import { UserContext } from "../../contexts/UserContextProvider";
 import { AuthContext } from "../../contexts/AuthContextProvider";
 import { CiTrash } from "react-icons/ci";
 import Address from "./Address";
+import OrderProductCard from "./OrderProductCard";
 
 const UserProfile = () => {
   var addAddressForm = document.querySelector("#addAddress");
@@ -40,6 +41,7 @@ const UserProfile = () => {
         <summary>Manage Addresses</summary>
         {user.addresses?.map((address, index) => (
           <Address
+            key={"address-list" + index}
             address={address}
             index={index}
             dispatchUserData={dispatchUserData}
@@ -110,8 +112,18 @@ const UserProfile = () => {
       </details>
       <details>
         <summary>Orders & Review</summary>
-        <p>asdsad</p>
-        <p>asdasd</p>
+        {user?.orders?.map((order, index) => {
+          return (
+            <details className="order-container">
+              <summary>Order: {index + 1}</summary>
+              {order?.map((product, productIndex) => (
+                <OrderProductCard
+                  product={{ ...product, orderIndex: index, productIndex }}
+                />
+              ))}
+            </details>
+          );
+        })}
       </details>
       <details className="details-form">
         <summary>Change Password</summary>

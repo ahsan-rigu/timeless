@@ -8,12 +8,15 @@ import { AuthContext } from "../../contexts/AuthContextProvider";
 import ProductInCart from "../cart-and-wishlist-card/cartAndWishlistCart";
 import Nothing from "../Nothing";
 import { DataContext } from "../../contexts/DataContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const { products } = useContext(DataContext);
   const { loggedIn } = useContext(AuthContext);
   const { userData } = useContext(UserContext);
-  const { setCartActive, cartActive } = useContext(SessionContext);
+  const { setCartActive, cartActive, setProfileActive } =
+    useContext(SessionContext);
 
   const items = loggedIn
     ? userData.user.cartItems
@@ -47,9 +50,11 @@ const Cart = () => {
         </div>
         <footer>
           {loggedIn ? (
-            <button>{`$${totalPrice} | CHEKOUT->`}</button>
+            <button
+              onClick={() => navigate("/checkout")}
+            >{`$${totalPrice} | CHEKOUT->`}</button>
           ) : (
-            <button>LOG IN</button>
+            <button onClick={() => setProfileActive(true)}>LOG IN</button>
           )}
         </footer>
       </div>

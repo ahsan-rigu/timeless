@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../../contexts/UserContextProvider";
 
 const Address = ({
   address: { name, phone, street, city, state, pin },
   index,
-  dispatchUserData,
 }) => {
+  const { dispatchUserData } = useContext(UserContext);
   const [isReadOnly, setIsReadOnly] = useState(true);
   const editAddress = (event, index) => {
     event.preventDefault();

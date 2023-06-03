@@ -56,7 +56,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
             type="radio"
             name="sort"
             checked={filterInput.sort === "P-HTL"}
-            onClick={(e) =>
+            onChange={(e) =>
               dispatchFilterInput({
                 action: "UPDATE_SORT",
                 payload: "P-HTL",
@@ -70,7 +70,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
             type="radio"
             name="sort"
             checked={filterInput.sort === "P-LTH"}
-            onClick={(e) =>
+            onChange={(e) =>
               dispatchFilterInput({
                 action: "UPDATE_SORT",
                 payload: "P-LTH",
@@ -84,7 +84,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
             type="radio"
             name="sort"
             checked={filterInput.sort === "R-HTL"}
-            onClick={(e) =>
+            onChange={(e) =>
               dispatchFilterInput({
                 action: "UPDATE_SORT",
                 payload: "R-HTL",
@@ -101,7 +101,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
             type="checkbox"
             name="gender-checkbox"
             checked={filterInput.genders.includes("Men")}
-            onClick={(e) =>
+            onChange={(e) =>
               dispatchFilterInput({
                 action: "UPDATE_FILTER_CHECKBOXES",
                 payload: {
@@ -119,7 +119,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
             type="checkbox"
             name="gender-checkbox"
             checked={filterInput.genders.includes("Women")}
-            onClick={(e) =>
+            onChange={(e) =>
               dispatchFilterInput({
                 action: "UPDATE_FILTER_CHECKBOXES",
                 payload: {
@@ -137,7 +137,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
             type="checkbox"
             name="gender-checkbox"
             checked={filterInput.genders.includes("Unisex")}
-            onClick={(e) =>
+            onChange={(e) =>
               dispatchFilterInput({
                 action: "UPDATE_FILTER_CHECKBOXES",
                 payload: {
