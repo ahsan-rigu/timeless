@@ -48,6 +48,10 @@ const Product = () => {
     if (index !== -1) isInWishList = true;
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <section name="product" className="container-listing">

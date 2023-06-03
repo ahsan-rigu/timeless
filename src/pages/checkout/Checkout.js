@@ -105,6 +105,7 @@ const Checkout = () => {
                 type="radio"
                 name="selected-address"
                 className="radio-address"
+                defaultChecked={index === 0}
               />
               <Address
                 key={"address-list" + index}

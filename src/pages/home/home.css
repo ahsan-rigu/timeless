@@ -5,6 +5,7 @@
 .container-slider *{
     font-family: 'Cormorant Garamond', serif;
     box-sizing: border-box;
+    z-index: 1;
 }
 
 .container-slider h2{
