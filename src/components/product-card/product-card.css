@@ -10,6 +10,7 @@
     margin: .5rem;
     z-index: 1;
     align-self: flex-start;
+    cursor: pointer;
 }
 
 .product-card .rating{

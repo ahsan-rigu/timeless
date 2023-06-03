@@ -1,6 +1,6 @@
 .wrapper:has(header){
-    position: -webkit-sticky;
     position: sticky;
+    position: -webkit-sticky;
     z-index: 900;
     top: 0;
 }

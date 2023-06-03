@@ -64,7 +64,6 @@ const Checkout = () => {
         userData.user.email,
         userData.user.cartItems
       );
-      await fetchUser();
       dispatchUserData({ action: "CLEAR_CART" });
       toast.success("Order Placed!");
     } catch (error) {

@@ -202,7 +202,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
           type="range"
           min="1"
           max="250000"
-          defaultValue={250000}
+          value={250000}
           onChange={(e) =>
             dispatchFilterInput({
               action: "UPDATE_MAX_PRICE",
@@ -228,7 +228,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
           max="5"
           step={1}
           id="myRange"
-          defaultValue={0}
+          value={0}
           onChange={(e) =>
             dispatchFilterInput({
               action: "UPDATE_MIN_RATING",

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DataContext } from "../../contexts/DataContextProvider";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";

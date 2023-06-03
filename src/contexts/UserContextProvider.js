@@ -8,11 +8,13 @@ import React, {
 import { AuthContext } from "./AuthContextProvider";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { DataContext } from "./DataContextProvider";
 
 export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
   const { loggedIn, setLoggedIn } = useContext(AuthContext);
+  const { products } = useContext(DataContext);
 
   const updateUser = async (user) => {
     try {
@@ -91,26 +93,38 @@ const UserContextProvider = ({ children }) => {
           if (index === -1) {
             userData.user.cartItems.push(payload);
           } else {
-            userData.user.cartItems[index] = {
-              _id: payload._id,
-              quantity:
-                userData.user.cartItems[index].quantity + payload.quantity,
-            };
+            const { quantity } = products.find(
+              ({ _id }) => _id === payload._id
+            );
+            console.log(quantity, payload);
+            if (
+              quantity <
+              payload.quantity + userData.user.cartItems[index].quantity
+            ) {
+              toast.error("Cant add this many");
+              return userData;
+            } else {
+              userData.user.cartItems[index] = {
+                _id: payload._id,
+                quantity:
+                  userData.user.cartItems[index].quantity + payload.quantity,
+              };
+              if (payload.quantity > 0) {
+                toast.promise(updateUser(userData.user), {
+                  loading: "Adding To Cart...",
+                  success: "Added To cart",
+                  error: <b>Cant Add</b>,
+                });
+              } else {
+                toast.promise(updateUser(userData.user), {
+                  loading: "Removing From Cart",
+                  success: "Removed From Cart",
+                  error: <b>Cant Remove!</b>,
+                });
+              }
+              return { ...userData };
+            }
           }
-          if (payload.quantity > 0) {
-            toast.promise(updateUser(userData.user), {
-              loading: "Adding To Cart...",
-              success: "Added To cart",
-              error: <b>Cant Add</b>,
-            });
-          } else {
-            toast.promise(updateUser(userData.user), {
-              loading: "Removing From Cart",
-              success: "Removed From Cart",
-              error: <b>Cant Remove!</b>,
-            });
-          }
-          return { ...userData };
         }
         case "REMOVE_FROM_CART": {
           userData.user.cartItems = userData.user.cartItems.filter(

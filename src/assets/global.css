@@ -153,6 +153,10 @@ border-color: var(--color-black);
     flex-wrap: wrap;
   }
 
+  *:-webkit-scrollbar {
+    display: none;
+  }
+
   & button{
     width: 100%;
     font-size: 2rem;

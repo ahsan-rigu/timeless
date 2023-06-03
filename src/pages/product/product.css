@@ -261,7 +261,7 @@
     border: 1px solid var(--color-light-grey);
     padding: .5rem;
     height: 10rem;
-    overflow: scroll;
+    overflow-y: scroll;
     width: min(20rem, 100vw);
 
     & div{

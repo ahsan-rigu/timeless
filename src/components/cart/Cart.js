@@ -53,7 +53,7 @@ const Cart = () => {
             items.length > 0 && (
               <button
                 onClick={() => navigate("/checkout") || setCartActive(false)}
-              >{`$${totalPrice} | CHEKOUT->`}</button>
+              >{`$${totalPrice} | CHECKOUT->`}</button>
             )
           ) : (
             <button onClick={() => setProfileActive(true)}>LOG IN</button>
