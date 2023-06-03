@@ -17,10 +17,6 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
     []
   );
 
-  const filteredProducts = filterProducts(filterInput, products);
-
-  console.log(filterInput);
-
   return (
     <div className={mobileFilterMenu ? "filters active" : "filters"}>
       <div className="filter-block clear-and-close">
@@ -202,7 +198,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
           type="range"
           min="1"
           max="250000"
-          value={250000}
+          value={filterInput.maxPrice}
           onChange={(e) =>
             dispatchFilterInput({
               action: "UPDATE_MAX_PRICE",
@@ -228,7 +224,7 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
           max="5"
           step={1}
           id="myRange"
-          value={0}
+          value={filterInput.minRating}
           onChange={(e) =>
             dispatchFilterInput({
               action: "UPDATE_MIN_RATING",
