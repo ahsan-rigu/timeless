@@ -8,6 +8,9 @@ const HeroSlide = ({ slide: { title, description, gender, image } }) => {
   const { dispatchFilterInput } = useContext(SessionContext);
 
   const setGenderAndNavigate = (gender) => {
+    dispatchFilterInput({
+      action: "CLEAR_ALL_FILTERS",
+    });
     if (gender !== "All") {
       dispatchFilterInput({
         action: "UPDATE_FILTER_CHECKBOXES",
