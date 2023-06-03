@@ -92,6 +92,12 @@ const UserContextProvider = ({ children }) => {
           );
           if (index === -1) {
             userData.user.cartItems.push(payload);
+            toast.promise(updateUser(userData.user), {
+              loading: "Adding To Cart...",
+              success: "Added To cart",
+              error: <b>Cant Add</b>,
+            });
+            return { ...userData };
           } else {
             const { quantity } = products.find(
               ({ _id }) => _id === payload._id
@@ -100,7 +106,7 @@ const UserContextProvider = ({ children }) => {
               quantity <
               payload.quantity + userData.user.cartItems[index].quantity
             ) {
-              toast.error("Cant add this many");
+              toast.error("Can't Add, More Then Available Stock");
               return userData;
             } else {
               userData.user.cartItems[index] = {
@@ -131,6 +137,7 @@ const UserContextProvider = ({ children }) => {
           );
           if (index === -1) {
             userData.user.wishlistItems.push(payload);
+            return { ...userData };
           } else {
             userData.user.wishlistItems[index] = {
               _id: payload._id,

@@ -174,7 +174,11 @@ const UserProfile = () => {
           }
         >
           <label>
-            <input type="text" required={true} placeholder="password"></input>
+            <input
+              type="password"
+              required={true}
+              placeholder="password"
+            ></input>
           </label>
           <button type="submit" className="btn-submit btn-delete">
             DELETE ACCOUNT

@@ -12,7 +12,7 @@ const LogInForm = ({ setFlipped }) => {
     toast.promise(signIn(email, password), {
       loading: "Logging in...",
       success: <b>Logged In</b>,
-      error: <b>Cant find user</b>,
+      error: <b>Email And Password Don't Match</b>,
     });
   };
 
