@@ -240,7 +240,8 @@ const Filters = ({ mobileFilterMenu, setMobileFilterMenu }) => {
           <input
             type="checkbox"
             name="gender-checkbox"
-            onClick={(e) =>
+            value={filterInput.outOfStock}
+            onChange={(e) =>
               dispatchFilterInput({
                 action: "UPDATE_OOS",
                 payload: e.target.checked,
