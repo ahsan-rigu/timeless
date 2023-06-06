@@ -205,7 +205,7 @@ const Checkout = () => {
           <h4>
             Final Price:<span>${totalPrice * (activeCoupon || 1)}</span>{" "}
           </h4>
-          {userData.user.addresses > 0 ? (
+          {userData.user.addresses.length > 0 ? (
             <button onClick={verifyPayment} className="btn-prime">
               PAY
             </button>
