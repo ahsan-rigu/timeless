@@ -5,6 +5,8 @@ import {
   MdOutlineStarOutline,
 } from "react-icons/md";
 
+//justtrtying
+
 const Rating = ({ rating, size }) => {
   const ratingArr = [];
   for (let i = 1; i < 6; i++) {
