@@ -112,69 +112,69 @@ const Checkout = () => {
               />
             </>
           ))}
+          <details className="details-form">
+            <summary>Add Address</summary>
+            <form id="addAddress" onSubmit={addAddress}>
+              <label>
+                Name
+                <input
+                  type="text"
+                  required={true}
+                  placeholder="name"
+                  defaultValue={"Mr Nemo"}
+                ></input>
+              </label>
+              <label>
+                Phone
+                <input
+                  type="number"
+                  required={true}
+                  placeholder="phone"
+                  defaultValue={"0000000000"}
+                ></input>
+              </label>
+              <label>
+                Street
+                <input
+                  type="text"
+                  required={true}
+                  placeholder="street"
+                  defaultValue={"Nowhere I am nothing"}
+                ></input>
+              </label>
+              <label>
+                City
+                <input
+                  type="text"
+                  required={true}
+                  placeholder="city"
+                  defaultValue={"Electricity?"}
+                ></input>
+              </label>
+              <label>
+                State
+                <input
+                  type="text"
+                  required={true}
+                  placeholder="state"
+                  defaultValue={"Liquid"}
+                ></input>
+              </label>
+              <label>
+                Area Code
+                <input
+                  type="number"
+                  required={true}
+                  placeholder="pin"
+                  defaultValue={"000000"}
+                ></input>
+              </label>
+              <button type="submit" className="btn-submit">
+                ADD
+              </button>
+            </form>
+          </details>
         </div>
-        <details className="details-form">
-          <summary>Add Address</summary>
-          <form id="addAddress" onSubmit={addAddress}>
-            <label>
-              Name
-              <input
-                type="text"
-                required={true}
-                placeholder="name"
-                defaultValue={"Mr Nemo"}
-              ></input>
-            </label>
-            <label>
-              Phone
-              <input
-                type="number"
-                required={true}
-                placeholder="phone"
-                defaultValue={"0000000000"}
-              ></input>
-            </label>
-            <label>
-              Street
-              <input
-                type="text"
-                required={true}
-                placeholder="street"
-                defaultValue={"Nowhere I am nothing"}
-              ></input>
-            </label>
-            <label>
-              City
-              <input
-                type="text"
-                required={true}
-                placeholder="city"
-                defaultValue={"Electricity?"}
-              ></input>
-            </label>
-            <label>
-              State
-              <input
-                type="text"
-                required={true}
-                placeholder="state"
-                defaultValue={"Liquid"}
-              ></input>
-            </label>
-            <label>
-              Area Code
-              <input
-                type="number"
-                required={true}
-                placeholder="pin"
-                defaultValue={"000000"}
-              ></input>
-            </label>
-            <button type="submit" className="btn-submit">
-              ADD
-            </button>
-          </form>
-        </details>
       </section>
 
       <section className="checkout-payment">

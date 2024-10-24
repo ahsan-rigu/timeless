@@ -70,6 +70,10 @@ justify-content: center;
  float: right;
 }
 
+.checkout-page>section>div{
+    padding: 1rem;
+}
+
 @media  (width <= 1224px) {
     .checkout-page{
         flex-direction: column;
@@ -77,6 +81,7 @@ justify-content: center;
         & section{
             margin: auto;
             width: min(600px , 100%);
+            height: auto;
         }
     }
 }

@@ -10,7 +10,7 @@ const emptyFilterInput = {
   categories: [],
   maxPrice: 250000,
   minRating: 0,
-  outOfStock: false,
+  outOfStock: true,
 };
 
 const filterInputReducer = (filterInput, { action, payload }) => {
@@ -59,7 +59,7 @@ const filterInputReducer = (filterInput, { action, payload }) => {
       filterInput.categories = [];
       filterInput.maxPrice = 250000;
       filterInput.minRating = 0;
-      filterInput.outOfStock = false;
+      filterInput.outOfStock = true;
       return { ...filterInput };
     }
 

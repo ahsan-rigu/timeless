@@ -73,7 +73,12 @@ const Header = () => {
                         to="/products"
                         onClick={() => setGenderAndCategory(gender, category)}
                       >
-                        <img src={image} className="pointer" alt={category} />
+                        <img
+                          src={image}
+                          className="pointer"
+                          alt={category}
+                          id="pc-nav-img"
+                        />
                       </Link>
                       <Link
                         to="/products"
