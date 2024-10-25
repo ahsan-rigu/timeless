@@ -13,7 +13,7 @@ const UserContextProvider = ({ children }) => {
   const updateUser = async (user) => {
     try {
       await axios.post(
-        "https://timeless-backend.onrender.com/updateUser",
+        "https://timeless-backend-b17216face60.herokuapp.com/updateUser",
         user
       );
       return "success";
@@ -29,7 +29,7 @@ const UserContextProvider = ({ children }) => {
       if (token) {
         try {
           const res = await axios.get(
-            "https://timeless-backend.onrender.com/fetch-user",
+            "https://timeless-backend-b17216face60.herokuapp.com/fetch-user",
             {
               headers: { authorization: `Bearer ${token}` },
             }

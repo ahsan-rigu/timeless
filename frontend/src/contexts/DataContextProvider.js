@@ -12,7 +12,10 @@ const DataContextProvider = ({ children }) => {
   const updateReview = async (review) => {
     try {
       console.log(review);
-      await axios.post("https://timeless-backend.onrender.com/review", review);
+      await axios.post(
+        "https://timeless-backend-b17216face60.herokuapp.com/review",
+        review
+      );
       return "success";
     } catch (error) {
       throw new Error(400);
@@ -21,10 +24,13 @@ const DataContextProvider = ({ children }) => {
 
   const placeOrder = async (email, order) => {
     try {
-      await axios.post("https://timeless-backend.onrender.com/placeOrder", {
-        email,
-        order,
-      });
+      await axios.post(
+        "https://timeless-backend-b17216face60.herokuapp.com/placeOrder",
+        {
+          email,
+          order,
+        }
+      );
       return "success";
     } catch (error) {
       throw new Error(400);
@@ -35,13 +41,19 @@ const DataContextProvider = ({ children }) => {
     try {
       const {
         data: { products },
-      } = await axios.get("https://timeless-backend.onrender.com/products");
+      } = await axios.get(
+        "https://timeless-backend-b17216face60.herokuapp.com/products"
+      );
       const {
         data: { navData },
-      } = await axios.get("https://timeless-backend.onrender.com/nav-data");
+      } = await axios.get(
+        "https://timeless-backend-b17216face60.herokuapp.com/nav-data"
+      );
       const {
         data: { featuredData },
-      } = await axios.get("https://timeless-backend.onrender.com/featured");
+      } = await axios.get(
+        "https://timeless-backend-b17216face60.herokuapp.com/featured"
+      );
       setProducts(products);
       setNavData(navData);
       setFeaturedData(featuredData);

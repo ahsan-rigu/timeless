@@ -12,7 +12,7 @@ const AuthContextProvider = ({ children }) => {
     if (token) {
       try {
         const res = await axios.get(
-          "https://timeless-backend.onrender.com/authorize-token",
+          "https://timeless-backend-b17216face60.herokuapp.com/authorize-token",
           {
             headers: { authorization: `Bearer ${token}` },
           }
@@ -33,10 +33,13 @@ const AuthContextProvider = ({ children }) => {
     try {
       const {
         data: { token },
-      } = await axios.post("https://timeless-backend.onrender.com/sign-in", {
-        email,
-        password,
-      });
+      } = await axios.post(
+        "https://timeless-backend-b17216face60.herokuapp.com/sign-in",
+        {
+          email,
+          password,
+        }
+      );
       localStorage.setItem("token", token);
       setLoggedIn(true);
       return "success";
@@ -48,7 +51,7 @@ const AuthContextProvider = ({ children }) => {
   const signUp = async (newUser) => {
     try {
       await axios.post(
-        "https://timeless-backend.onrender.com/sign-up",
+        "https://timeless-backend-b17216face60.herokuapp.com/sign-up",
         newUser
       );
       localStorage.setItem("localData", null);
@@ -68,7 +71,7 @@ const AuthContextProvider = ({ children }) => {
   const deleteUser = async (email, password) => {
     try {
       const res = await axios.post(
-        "https://timeless-backend.onrender.com/deleteUser",
+        "https://timeless-backend-b17216face60.herokuapp.com/deleteUser",
         {
           email,
           password,
@@ -88,7 +91,7 @@ const AuthContextProvider = ({ children }) => {
   const changePassword = async (email, password, newPassword) => {
     try {
       const res = await axios.post(
-        "https://timeless-backend.onrender.com/changePassword",
+        "https://timeless-backend-b17216face60.herokuapp.com/changePassword",
         {
           email,
           password,
